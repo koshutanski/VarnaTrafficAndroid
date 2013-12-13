@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+              <!--android:orientation="vertical"-->
+              <!--android:layout_width="match_parent"-->
+              <!--android:layout_height="match_parent"-->
+              <!--android:shrinkColumns="*"-->
+              <!--android:stretchColumns="*">-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+    <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="390dp" android:id="@+id/busesTable">
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:gravity="center_horizontal"
+                android:shrinkColumns="0" >>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:typeface="serif"
+                    android:textSize="18dp"
+                    android:text="Автобусни линии"
+                    android:gravity="center"
+                    android:id="@+id/busesTableHeaderTextView" android:layout_column="0"/>
+        </TableRow>
+
+    </TableLayout>
+</ScrollView>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Обнови"
+            android:id="@+id/refreshButton" android:layout_gravity="center"/>
+
+</LinearLayout>
+<!--</LinearLayout>-->
