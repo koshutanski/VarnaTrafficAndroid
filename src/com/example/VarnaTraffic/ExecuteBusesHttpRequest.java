@@ -5,6 +5,7 @@ import VarnaTraffic.Helpers.BusesLiveData;
 import VarnaTraffic.Helpers.LiveDataModel;
 import VarnaTraffic.Helpers.ScheduleModel;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -128,78 +129,90 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer,Void,BusesLiveDat
 
     @Override
     protected void onPostExecute(BusesLiveData result) {
-
+        TextView arriveTimeTextView;
+        TextView arriveDelay;
+        TextView arriveInTextView;
+        TextView distanceTextView;
+        TextView busLine;
+        TableRow rowBusLine;
+        //TableLayout.LayoutParams llp = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1.0f);
+        TableRow.LayoutParams llp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        llp.setMargins(5, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
         TableLayout table = (TableLayout) rootView.findViewById(R.id.busesTable);
-        //  table.setStretchAllColumns(true);
-        //  table.setShrinkAllColumns(true);
         Integer tableChildCount = table.getChildCount();
         if(tableChildCount > 1)
         {
-          table.removeViews(1000, tableChildCount -1);
-        }
+            int tableRowNumber = 1;
+            Boolean isValidRow = true;
+            while(isValidRow)
+            {
+            View tableRowToRemove =   table.getChildAt(tableRowNumber);
 
+            if(tableRowToRemove instanceof TableRow)
+            {
+                ((TableRow)tableRowToRemove).removeAllViews();
+                table.removeView(tableRowToRemove);
+            }
+                else
+            {
+            isValidRow = false;
+            }
+                tableRowNumber++;
+            }
+        }
         int rowCounter = 0;
         int rowChildCounter = 0;
         for (LiveDataModel liveData : result.LiveData)
         {
-            TableRow rowBusLine = new TableRow(context);
+            rowBusLine = new TableRow(context);
             rowBusLine.setId(1000 + rowCounter);
-            TextView busLine = new TextView(context);
+
+            busLine = new TextView(context);
             busLine.setId(1001+rowChildCounter);
             busLine.setText(liveData.Line);
             busLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
-//            LinearLayout.LayoutParams llp = (LinearLayout.LayoutParams) busLine.getLayoutParams();
-//            llp.setMargins(0, 0, 0, 1);
-//            busLine.setLayoutParams(llp);
-//            busLine.setPadding(10, 10, 40, 3);
+            busLine.setLayoutParams(llp);
+       //     busLine.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-            TextView arriveTimeTextView = new TextView(context);
+            arriveTimeTextView = new TextView(context);
             arriveTimeTextView.setText(liveData.ArriveTime);
-            //  arriveTimeTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-//            llp = (LinearLayout.LayoutParams) arriveTimeTextView.getLayoutParams();
-//            llp.setMargins(0, 0, 0, 1);
-//            arriveTimeTextView.setLayoutParams(llp);
-//            arriveTimeTextView.setPadding(10, 10, 40, 3);
             arriveTimeTextView.setId(1002+rowChildCounter);
+            arriveTimeTextView.setLayoutParams(llp);
+            arriveTimeTextView.setTextSize(16);
+            arriveTimeTextView.setTextColor(Color.GREEN);
+       //     arriveTimeTextView.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-            TextView arriveDelay = new TextView(context);
+
+            arriveDelay = new TextView(context);
             arriveDelay.setText(liveData.Delay);
-            //  arriveDelay.setGravity(Gravity.CENTER_HORIZONTAL);
-//            llp = (LinearLayout.LayoutParams) arriveDelay.getLayoutParams();
-//            llp.setMargins(0, 0, 0, 1);
-//            arriveDelay.setLayoutParams(llp);
-//            arriveDelay.setPadding(10, 10, 40, 3);
             arriveDelay.setId(1003+rowChildCounter);
+            arriveDelay.setLayoutParams(llp);
+         //   arriveDelay.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-
-            TextView arriveInTextView = new TextView(context);
+            arriveInTextView = new TextView(context);
             arriveInTextView.setText(liveData.ArriveIn);
-            //   arriveInTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-//            llp = (LinearLayout.LayoutParams) arriveInTextView.getLayoutParams();
-//            llp.setMargins(0, 0, 0, 1);
-//            arriveInTextView.setLayoutParams(llp);
-//            arriveInTextView.setPadding(10, 10, 40, 3);
             arriveInTextView.setId(1004+rowChildCounter);
+            arriveInTextView.setLayoutParams(llp);
+        //    arriveInTextView.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-            TextView distanceTextView = new TextView(context);
+
+            TableRow.LayoutParams distanceLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+            distanceLayout.setMargins(20, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+            distanceTextView = new TextView(context);
             distanceTextView.setText(liveData.DistanceLeft);
-            //    distanceTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-//            llp = (LinearLayout.LayoutParams) distanceTextView.getLayoutParams();
-//            llp.setMargins(0, 0, 0, 1);
-//            distanceTextView.setLayoutParams(llp);
-//            distanceTextView.setPadding(10, 10, 40, 3);
             distanceTextView.setId(1005+rowChildCounter);
+            distanceTextView.setLayoutParams(distanceLayout);
+        //    distanceTextView.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
             rowBusLine.addView(busLine);
             rowBusLine.addView(arriveTimeTextView);
-            rowBusLine.addView(arriveDelay);
             rowBusLine.addView(arriveInTextView);
+            rowBusLine.addView(arriveDelay);
             rowBusLine.addView(distanceTextView);
 
             table.addView(rowBusLine);
             rowChildCounter++;
             rowCounter++;
-
 
         }
         }

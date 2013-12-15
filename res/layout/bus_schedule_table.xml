@@ -1,48 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-              <!--android:orientation="vertical"-->
-              <!--android:layout_width="match_parent"-->
-              <!--android:layout_height="match_parent"-->
-              <!--android:shrinkColumns="*"-->
-              <!--android:stretchColumns="*">-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
->
+        android:layout_height="wrap_content" >
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/scrollView1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
-
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:orientation="vertical" >
     <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="390dp" android:id="@+id/busesTable">
+             android:id="@+id/busesTable"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:stretchColumns="0,1" >
         <TableRow
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:gravity="center_horizontal"
-                android:shrinkColumns="0" >>
+                android:shrinkColumns="0" >
+            <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:typeface="serif"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:text="Автобусни линии"-->
+                    <!--android:gravity="center"-->
+                    <!--android:id="@+id/busesTableHeaderTextView" android:layout_column="0"/>          </TableRow>-->
             <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/tableHeaderNumber"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:typeface="serif"
-                    android:textSize="18dp"
-                    android:text="Автобусни линии"
-                    android:gravity="center"
-                    android:id="@+id/busesTableHeaderTextView" android:layout_column="0"/>
-        </TableRow>
+                    android:text="Номер"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                    android:id="@+id/tableHeaderArrive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Пр"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                    android:id="@+id/tableHeaderLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ост"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/tableHeaderDelay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text="Зак"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                    android:id="@+id/tableHeaderDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Д"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
+        </TableRow>
     </TableLayout>
-</ScrollView>
+            </LinearLayout>
+        </ScrollView>
+
+
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Обнови"
             android:id="@+id/refreshButton" android:layout_gravity="center"/>
 
-</LinearLayout>
-<!--</LinearLayout>-->
+    </LinearLayout>
