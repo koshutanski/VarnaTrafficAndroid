@@ -35,7 +35,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         selectBusStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                if(!listItem.equals(null))
+                if(listItem != null)
                 {
                     try{
                 Intent intent = new Intent(MainActivity.this, BusesTableActivity.class);

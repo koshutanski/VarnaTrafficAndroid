@@ -37,32 +37,36 @@
                     android:id="@+id/tableHeaderNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Номер"
+                    android:layout_marginLeft="2dp"
+                    android:text="@string/tableHeaderNumber"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
                     android:id="@+id/tableHeaderArrive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Пр"
+                    android:layout_marginLeft="2dp"
+                    android:text="@string/tableHeaderArrive"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
                     android:id="@+id/tableHeaderLeft"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ост"
+                    android:layout_marginLeft="2dp"
+                    android:text="@string/tableHeaderLeft"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
                 android:id="@+id/tableHeaderDelay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
-                android:text="Зак"
+                android:text="@string/tableHeaderDelay"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
                     android:id="@+id/tableHeaderDistance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Д"
+                    android:layout_marginLeft="2dp"
+                    android:text="@string/tableHeaderDistance"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </TableRow>
@@ -74,7 +78,7 @@
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Обнови"
+            android:text="@string/refreshButton"
             android:id="@+id/refreshButton" android:layout_gravity="center"/>
 
     </LinearLayout>
