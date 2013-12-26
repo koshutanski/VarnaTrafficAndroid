@@ -14,4 +14,8 @@
             android:text="@string/selectBusStopButton"
             android:id="@+id/selectBusStopButton" android:layout_gravity="center"/>
 
+    <ListView
+        android:id="@+id/lvMostRecent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"></ListView>
 </LinearLayout>

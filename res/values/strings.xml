@@ -6,7 +6,12 @@
     <string name="tableHeaderLeft">идва</string>
     <string name="tableHeaderArrive">разп</string>
     <string name="tableHeaderNumber">номер</string>
+    <string name="tableHeaderEmptyString">Няма автобуси в този момент</string>
     <string name="refreshButton">Обнови</string>
     <string name="selectBusStopButton">Избирам спирка</string>
+
+    <string name="tableScheduleHeader">разписание</string>
+    <string name="tableScheduleHeaderNumber">номер</string>
+
 
 </resources>

@@ -47,7 +47,6 @@ public class BusesTableActivity extends Activity implements View.OnClickListener
             listItem = (AutoCompleteListItem)extras.get("listItem");
         }
 
-
         Toast.makeText(this, listItem.getText(),Toast.LENGTH_SHORT).show();
         View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
         callAsynchronousTask(this,rootView,listItem.getId());
