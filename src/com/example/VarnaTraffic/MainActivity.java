@@ -13,7 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -28,7 +30,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
      */
     ListView lvMostRecent;
     AutoCompleteListItem listItem;
-    ArrayAdapter<AutoCompleteListItem> adapter;
+   // ArrayAdapter<AutoCompleteListItem> adapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -63,8 +65,21 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         testList.add(new AutoCompleteListItem(4,"Item2"));
         testList.add(new AutoCompleteListItem(88,"Item3"));
 
-       // adapter = new ArrayAdapter<AutoCompleteListItem>(ctx,R.id.lvMostRecent,testList);
-       // lvMostRecent.setAdapter(adapter);
+          //  ListAdapter adapt = new SimpleAdapter(ctx,)
+
+
+        // Define a new Adapter
+        // First parameter - Context
+        // Second parameter - Layout for the row
+        // Third parameter - ID of the TextView to which the data is written
+        // Forth - the Array of data
+
+        ArrayAdapter<AutoCompleteListItem> adapter = new ArrayAdapter<AutoCompleteListItem>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, testList);
+
+
+        // Assign adapter to ListView
+        lvMostRecent.setAdapter(adapter);
 
         lvMostRecent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
