@@ -92,7 +92,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginLeft="2dp"
-                        android:textAlignment="viewStart"
                         android:text="@string/tableScheduleHeaderNumber"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 

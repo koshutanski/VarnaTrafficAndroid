@@ -12,6 +12,6 @@
 
     <string name="tableScheduleHeader">разписание</string>
     <string name="tableScheduleHeaderNumber">номер</string>
-
+    <string name="sharedPrreferencesBusStops">RecentBusStops</string>
 
 </resources>
