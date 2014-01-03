@@ -5,8 +5,11 @@ import VarnaTraffic.Helpers.BusesLiveData;
 import VarnaTraffic.Helpers.LiveDataModel;
 import VarnaTraffic.Helpers.ScheduleModel;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.util.TypedValue;
@@ -25,6 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,6 +56,8 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
     @Override
     protected BusesLiveData doInBackground(Integer... params) {
+        if(isInternetConnectionAvailable())
+        {
         BusesLiveData resultData = null;
         HttpURLConnection conn = null;
         StringBuilder jsonResults = new StringBuilder();
@@ -137,39 +143,37 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         }
 
         return resultData;
-
+        }
+        else
+        {
+            return null;
+        }
     }
 
     @Override
     protected void onPostExecute(BusesLiveData result) {
+        Resources res = context.getResources();
         TextView arriveTimeTextView;
         TextView arriveDelay;
         TextView arriveInTextView;
         TextView distanceTextView;
         TextView busLine;
+        TextView emptyHeader;
         TableRow rowBusLine;
+
+        TableRow rowBusScheduleLine;
+        TextView busScheduleLine;
+        TextView busScheduleTimes;
+
         //TableLayout.LayoutParams llp = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1.0f);
         TableRow.LayoutParams llp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         llp.setMargins(5, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
         TableLayout table = (TableLayout) rootView.findViewById(R.id.busesTable);
-        Integer tableChildCount = table.getChildCount();
-        if (tableChildCount > 1) {
-            int tableRowNumber = 1;
-            Boolean isValidRow = true;
-            while (isValidRow) {
-                View tableRowToRemove = table.getChildAt(tableRowNumber);
-                if (tableRowToRemove instanceof TableRow) {
-                    ((TableRow) tableRowToRemove).removeAllViews();
-                    table.removeView(tableRowToRemove);
-                } else {
-                    isValidRow = false;
-                }
-
-
-            }
-        }
+        DeleteTableChildRows(table, 1);
         int rowCounter = 0;
         int rowChildCounter = 0;
+        if(!result.LiveData.isEmpty())
+        {
         for (LiveDataModel liveData : result.LiveData) {
             rowBusLine = new TableRow(context);
             rowBusLine.setId(1000 + rowCounter);
@@ -202,7 +206,6 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 arriveDelay.setTextColor(Color.RED);
             }
 
-
             arriveInTextView = new TextView(context);
             arriveInTextView.setText(liveData.ArriveIn );
             arriveInTextView.setId(1004 + rowChildCounter);
@@ -227,6 +230,107 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
             rowCounter++;
 
         }
+        }
+        else
+        {
+            rowBusLine = new TableRow(context);
+            rowBusLine.setId(1000 + rowCounter);
+
+            emptyHeader = new TextView(context);
+            emptyHeader.setId(1001 + rowChildCounter);
+            emptyHeader.setText(res.getString(R.string.tableHeaderEmptyString));
+            emptyHeader.setTypeface(Typeface.SERIF, Typeface.BOLD);
+            emptyHeader.setLayoutParams(llp);
+            rowBusLine.addView(emptyHeader);
+        }
+
+
+
+
+        TableRow.LayoutParams llpSchedules = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        llpSchedules.setMargins(5, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+        TableLayout tableSchedule = (TableLayout) rootView.findViewById(R.id.busesScheduleTable);
+        DeleteTableChildRows(tableSchedule, 1);
+        int rowScheduleCounter = 0;
+        int rowScheduleChildCounter = 0;
+        if(!result.LiveData.isEmpty())
+        {
+            for (Map.Entry<String,ArrayList<ScheduleModel>> scheduleData : result.ScheduleData.entrySet()) {
+                rowBusScheduleLine = new TableRow(context);
+                rowBusScheduleLine.setId(1000 + rowScheduleCounter);
+
+                busScheduleLine = new TextView(context);
+                busScheduleLine.setId(1001 + rowChildCounter);
+                busScheduleLine.setText(scheduleData.getKey());
+                busScheduleLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
+               // busScheduleLine.setLayoutParams(llpSchedules);
+                busScheduleLine.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+
+                String busLineScheduleToDisplay = "" ;
+                for(ScheduleModel scheduleDetail : scheduleData.getValue())
+                {
+                    busLineScheduleToDisplay += scheduleDetail.Text + " ";
+                }
+                busScheduleTimes = new TextView(context);
+                busScheduleTimes.setText(busLineScheduleToDisplay);
+                busScheduleTimes.setId(1002 + rowChildCounter);
+                busScheduleTimes.setLayoutParams(llpSchedules);
+
+
+                rowBusScheduleLine.addView(busScheduleLine);
+                rowBusScheduleLine.addView(busScheduleTimes);
+                tableSchedule.addView(rowBusScheduleLine);
+                rowScheduleCounter++;
+                rowScheduleChildCounter++;
+
+            }
+        }
+        else
+        {
+            rowBusLine = new TableRow(context);
+            rowBusLine.setId(1000 + rowCounter);
+
+            emptyHeader = new TextView(context);
+            emptyHeader.setId(1001 + rowChildCounter);
+            emptyHeader.setText(res.getString(R.string.tableHeaderEmptyString));
+            emptyHeader.setTypeface(Typeface.SERIF, Typeface.BOLD);
+            emptyHeader.setLayoutParams(llp);
+            rowBusLine.addView(emptyHeader);
+        }
+
+
+    }
+
+    private Integer DeleteTableChildRows(TableLayout table, int initialRows)
+    {
+        Integer rowsDeleted = 0;
+        Integer tableChildCount = table.getChildCount();
+        if (tableChildCount > initialRows) {
+            int tableRowNumber = initialRows;
+            Boolean isValidRow = true;
+            while (isValidRow) {
+                View tableRowToRemove = table.getChildAt(tableRowNumber);
+                if (tableRowToRemove instanceof TableRow) {
+                    ((TableRow) tableRowToRemove).removeAllViews();
+                    table.removeView(tableRowToRemove);
+                    rowsDeleted++;
+                } else {
+                    isValidRow = false;
+                }
+            }
+        }
+        return rowsDeleted;
+    }
+
+    private Boolean isInternetConnectionAvailable()
+    {
+        ConnectivityManager cm =
+                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        Boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
     }
 
     @Override
