@@ -2,6 +2,9 @@ package VarnaTraffic.Helpers;
 
 import java.io.Serializable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created with IntelliJ IDEA.
  * User: miroslav
@@ -34,8 +37,31 @@ public class AutoCompleteListItem implements Serializable {
     public String toString() {
         return this.Text;
     }
-
-
     public Integer Id;
     public String Text;
+
+    public String toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("Id", Id);
+            jsonObject.put("Text", Text);
+
+            return jsonObject.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    public void serializeJSON(String jsonListItem) {
+
+        try {
+            JSONObject jsonObject = new JSONObject(jsonListItem);
+            Id= jsonObject.getInt("Id");
+            Text = jsonObject.getString("Text");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }
