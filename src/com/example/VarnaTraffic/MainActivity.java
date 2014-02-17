@@ -18,6 +18,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.util.*;
@@ -37,6 +38,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         setContentView(R.layout.main);
 
        final Context ctx = this;
+
+     //   SharedPreferences sharedPrefs = this.getSharedPreferences(getString(R.string.sharedPrreferencesBusStops), Context.MODE_PRIVATE);
+     //   SharedPreferences.Editor editor = sharedPrefs.edit();
+
+     //   editor.clear().commit();
+
         lvMostRecent = (ListView)findViewById(R.id.lvMostRecent);
         AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
         Button selectBusStopButton = (Button) findViewById(R.id.selectBusStopButton);
@@ -64,11 +71,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         Map<String,?> busStops = sharedPref.getAll();
         for(Map.Entry<String,?> entry : busStops.entrySet()){
         String objectValue =  entry.getValue().toString();
+            AutoCompleteListItem obj = new AutoCompleteListItem();
             try {
-                byte b[] = objectValue.getBytes();
-                ByteArrayInputStream bi = new ByteArrayInputStream(b);
-                ObjectInputStream si = new ObjectInputStream(bi);
-                AutoCompleteListItem obj = (AutoCompleteListItem) si.readObject();
+//                byte b[] = objectValue.getBytes();
+//                ByteArrayInputStream bi = new ByteArrayInputStream(b);
+//                ObjectInputStream si = new ObjectInputStream(bi);
+                obj.serializeJSON(objectValue);
                 mostRecentStopsList.add(obj);
             } catch (Exception e) {
                 Log.e("Exception", "Error trying deserialize the bus stop object", e);
@@ -116,14 +124,18 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     private void SaveMostRecentBusStop(AutoCompleteListItem listItem)
     {
         try {
-            ByteArrayOutputStream bo = new ByteArrayOutputStream();
-            ObjectOutputStream so = new ObjectOutputStream(bo);
-            so.writeObject(listItem);
-            so.flush();
-            String serializedObject = bo.toString();
+
+
+//            ByteArrayOutputStream bo = new ByteArrayOutputStream();
+//            ObjectOutputStream so = new ObjectOutputStream(bo);
+//            so.writeObject(listItem);
+//            so.flush();
+            String serializedObject = listItem.toJSON();
 
             SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.sharedPrreferencesBusStops), Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
+
+
             Map<String,?> busStops = sharedPref.getAll();
 
             int numberOfBusStops =  busStops.size();
@@ -150,8 +162,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             }
             editor.commit();
 
-        }   catch (IOException e) {
-            Log.e("Exception", "Error trying serialize the bus stop object", e);
+//        }   catch (IOException e) {
+//            Log.e("Exception", "Error trying serialize the bus stop object", e);
         }
         catch (Exception e) {
             Log.e("Exception", "Error trying to save the chosen bus stop", e);
