@@ -108,7 +108,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
                 AutoCompleteListItem listItem = (AutoCompleteListItem)lvMostRecent.getItemAtPosition(position);
+              //  Intent intent = new Intent(MainActivity.this, BusesTableActivity.class);
+              //  intent.putExtra("listItem", (Serializable)listItem);
                 SaveMostRecentBusStop(listItem);
+               // startActivity(intent);
                 Toast.makeText(ctx, listItem.getText(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -124,8 +127,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     private void SaveMostRecentBusStop(AutoCompleteListItem listItem)
     {
         try {
-
-
 //            ByteArrayOutputStream bo = new ByteArrayOutputStream();
 //            ObjectOutputStream so = new ObjectOutputStream(bo);
 //            so.writeObject(listItem);
@@ -140,11 +141,14 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
             int numberOfBusStops =  busStops.size();
             String[] values = busStops.values().toArray(new String[busStops.values().size()]);
+          boolean isValueContained =  Arrays.asList(values).contains(listItem.toJSON());
 
             Stack<String> stackOfValues = new Stack<String>();
             for(int i = values.length - 1; i >= 0; i--) {
                 stackOfValues.add(values[i]);
             }
+            if(!isValueContained)
+            {
             if(numberOfBusStops == 5)
             {
                 String popObject =  stackOfValues.pop();
@@ -161,6 +165,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 editor.putString(i.toString(),valueToSave);
             }
             editor.commit();
+            }
+            else
+            {
+                stackOfValues.remove(listItem.toJSON());
+                stackOfValues.push(serializedObject);
+            }
 
 //        }   catch (IOException e) {
 //            Log.e("Exception", "Error trying serialize the bus stop object", e);
