@@ -78,128 +78,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java" line="50" class="com.example.VarnaTraffic.MainActivity$1" package="com.example.VarnaTraffic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java" line="52" class="com.example.VarnaTraffic.MainActivity$1" package="com.example.VarnaTraffic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java" line="51" class="com.example.VarnaTraffic.MainActivity$1" package="com.example.VarnaTraffic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java" line="61" class="com.example.VarnaTraffic.MainActivity" package="com.example.VarnaTraffic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java" line="63" class="com.example.VarnaTraffic.MainActivity" package="com.example.VarnaTraffic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java" line="64" class="com.example.VarnaTraffic.MainActivity" package="com.example.VarnaTraffic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java" line="65" class="com.example.VarnaTraffic.MainActivity" package="com.example.VarnaTraffic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java" line="71" class="com.example.VarnaTraffic.MainActivity" package="com.example.VarnaTraffic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -212,7 +91,7 @@
       <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="15" selection-start="14" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+            <state line="1" column="11" selection-start="14" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="391">
               <folding />
             </state>
           </provider>
@@ -221,12 +100,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="42" selection-start="2801" selection-end="2801" vertical-scroll-proportion="0.526616" vertical-offset="505" max-vertical-offset="2482">
-              <folding>
-                <element signature="e#2373#2419#0" expanded="true" />
-                <element signature="e#5044#5090#0" expanded="true" />
-                <element signature="e#5439#5447#0" expanded="true" />
-              </folding>
+            <state line="129" column="60" selection-start="5352" selection-end="5352" vertical-scroll-proportion="0.5199409" vertical-offset="2046" max-vertical-offset="3344">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -234,7 +109,7 @@
       <file leaf-file-name="AutoCompleteListItem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/VarnaTraffic/Helpers/AutoCompleteListItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="57" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+            <state line="11" column="57" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="799">
               <folding />
             </state>
           </provider>
@@ -252,7 +127,7 @@
       <file leaf-file-name="BusesTableActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/BusesTableActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="0" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1173">
+            <state line="39" column="0" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1649">
               <folding />
             </state>
           </provider>
@@ -260,20 +135,20 @@
       </file>
       <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state line="21" column="0" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="459">
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ExecuteBusesHttpRequest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/ExecuteBusesHttpRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="333" column="33" selection-start="13801" selection-end="13801" vertical-scroll-proportion="0.0" vertical-offset="4339" max-vertical-offset="5474">
+            <state line="333" column="5" selection-start="13801" selection-end="13801" vertical-scroll-proportion="0.0" vertical-offset="5661" max-vertical-offset="5950">
               <folding />
             </state>
           </provider>
@@ -282,7 +157,7 @@
       <file leaf-file-name="BusStopsAutoCompleteAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/BusStopsAutoCompleteAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="54" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2516">
+            <state line="105" column="54" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="2839">
               <folding />
             </state>
           </provider>
@@ -334,9 +209,6 @@
             <id>Android Lint</id>
           </State>
           <State>
-            <id>Ant inspections</id>
-          </State>
-          <State>
             <id>Code style issues</id>
           </State>
           <State>
@@ -346,6 +218,11 @@
             <id>Naming conventions</id>
           </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -375,6 +252,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -392,61 +271,9 @@
               <option name="myItemId" value="VarnaTraffic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VarnaTraffic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VarnaTraffic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VarnaTraffic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VarnaTraffic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VarnaTraffic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VarnaTraffic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VarnaTraffic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -454,7 +281,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="project.propCompiler" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="recentsLimit" value="5" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -668,34 +495,34 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.792873" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924226" sideWeight="0.792873" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.7951002" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38666666" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38666666" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38648948" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21975583" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.39965987" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.39965987" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32666665" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18444444" sideWeight="0.4946752" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.7951002" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24920128" sideWeight="0.5986394" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12832801" sideWeight="0.5986394" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20555556" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.7951002" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32666665" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997773" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -729,9 +556,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/VarnaTraffic/Helpers/BusesLiveData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="337" selection-end="368" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="374">
-          <folding />
-        </state>
+        <state line="14" column="50" selection-start="337" selection-end="368" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="374" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/BusStopsAutoCompleteAdapter.java">
@@ -751,11 +576,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="0" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1088">
-          <folding>
-            <element signature="e#2373#2419#0" expanded="true" />
-            <element signature="e#5044#5090#0" expanded="true" />
-            <element signature="e#5439#5447#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -781,23 +602,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/bus_schedule_table.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="80" column="47" selection-start="3812" selection-end="3812" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="25" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="391">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
@@ -810,11 +631,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="17" selection-start="1765" selection-end="1765" vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1088">
-          <folding>
-            <element signature="e#2373#2419#0" expanded="true" />
-            <element signature="e#5044#5090#0" expanded="true" />
-            <element signature="e#5439#5447#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -847,23 +664,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/bus_schedule_table.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="80" column="47" selection-start="3812" selection-end="3812" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="25" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="391">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
@@ -876,11 +693,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="17" selection-start="1765" selection-end="1765" vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1088">
-          <folding>
-            <element signature="e#2373#2419#0" expanded="true" />
-            <element signature="e#5044#5090#0" expanded="true" />
-            <element signature="e#5439#5447#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -913,23 +726,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/bus_schedule_table.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="16" selection-start="2788" selection-end="2788" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="56" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1088">
-          <folding>
-            <element signature="e#2373#2419#0" expanded="true" />
-            <element signature="e#5044#5090#0" expanded="true" />
-            <element signature="e#5439#5447#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -955,23 +764,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/bus_schedule_table.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="51" selection-start="3357" selection-end="3357" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="56" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1088">
-          <folding>
-            <element signature="e#2373#2419#0" expanded="true" />
-            <element signature="e#5044#5090#0" expanded="true" />
-            <element signature="e#5439#5447#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,13 +827,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/list_item.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
@@ -1039,13 +844,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="459">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/VarnaTraffic/Helpers/LiveDataModel.java">
@@ -1056,25 +861,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/bus_schedule_table.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="102" column="75" selection-start="4862" selection-end="4862" vertical-scroll-proportion="0.6193265" vertical-offset="1311" max-vertical-offset="2091">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/VarnaTraffic/Helpers/BusesLiveData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="337" selection-end="368" vertical-scroll-proportion="0.3121469" vertical-offset="0" max-vertical-offset="708">
-          <folding />
-        </state>
+        <state line="14" column="50" selection-start="337" selection-end="368" vertical-scroll-proportion="0.3121469" vertical-offset="0" max-vertical-offset="708" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/ExecuteBusesHttpRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="333" column="33" selection-start="13801" selection-end="13801" vertical-scroll-proportion="0.0" vertical-offset="4339" max-vertical-offset="5474">
+        <state line="333" column="5" selection-start="13801" selection-end="13801" vertical-scroll-proportion="0.0" vertical-offset="5661" max-vertical-offset="5950">
           <folding />
         </state>
       </provider>
@@ -1102,19 +905,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="15" selection-start="14" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+        <state line="1" column="11" selection-start="14" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="391">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/VarnaTraffic/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="42" selection-start="2801" selection-end="2801" vertical-scroll-proportion="0.526616" vertical-offset="505" max-vertical-offset="2482">
-          <folding>
-            <element signature="e#2373#2419#0" expanded="true" />
-            <element signature="e#5044#5090#0" expanded="true" />
-            <element signature="e#5439#5447#0" expanded="true" />
-          </folding>
+        <state line="129" column="60" selection-start="5352" selection-end="5352" vertical-scroll-proportion="0.5199409" vertical-offset="2046" max-vertical-offset="3344">
+          <folding />
         </state>
       </provider>
     </entry>
