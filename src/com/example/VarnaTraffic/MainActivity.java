@@ -1,6 +1,7 @@
 package com.example.VarnaTraffic;
 
 import VarnaTraffic.Helpers.AutoCompleteListItem;
+import VarnaTraffic.Helpers.ConstantHelper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -67,7 +68,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             }
         });
         List<AutoCompleteListItem> mostRecentStopsList = new ArrayList<AutoCompleteListItem>();
-        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.sharedPrreferencesBusStops), Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = this.getSharedPreferences(ConstantHelper.SharedPreferenceRecentBusStops, Context.MODE_PRIVATE);
         Map<String, ?> busStops = sharedPref.getAll();
         Map<Integer,String> dictBusStops = new HashMap<Integer, String>();
 
@@ -76,16 +77,17 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             int key = Integer.parseInt(entry.getKey());
             dictBusStops.put(key, objectValue);
         }
-        
+        Map<Integer, String> treeMap = new TreeMap<Integer, String>(dictBusStops);
 
-
-        AutoCompleteListItem obj = new AutoCompleteListItem();
-        try {
-            obj.serializeJSON(objectValue);
-            Log.d(LOGDEBUGTAG, "view: obj=" + obj);
-            mostRecentStopsList.add(obj);
-        } catch (Exception e) {
-            Log.e("Exception", "Error trying deserialize the bus stop object", e);
+        for (Map.Entry<Integer, String> entry : treeMap.entrySet()) {
+            AutoCompleteListItem obj = new AutoCompleteListItem();
+            try {
+                obj.serializeJSON(entry.getValue());
+                Log.d(LOGDEBUGTAG, "view: obj=" + obj);
+                mostRecentStopsList.add(obj);
+            } catch (Exception e) {
+                Log.e("Exception", "Error trying deserialize the bus stop object", e);
+            }
         }
 
         // Define a new Adapter
@@ -104,12 +106,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         lvMostRecent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
-                AutoCompleteListItem listItem = (AutoCompleteListItem) lvMostRecent.getItemAtPosition(position);
+                AutoCompleteListItem recentListItem = (AutoCompleteListItem) lvMostRecent.getItemAtPosition(position);
                 //  Intent intent = new Intent(MainActivity.this, BusesTableActivity.class);
                 //  intent.putExtra("listItem", (Serializable)listItem);
-                SaveMostRecentBusStop(listItem);
+              //  SaveMostRecentBusStop(recentListItem);
                 // startActivity(intent);
-                Toast.makeText(ctx, listItem.getText(), Toast.LENGTH_SHORT).show();
+                AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
+                autoCompView.setText(recentListItem.getText(),false);
+                listItem=recentListItem;
+                Toast.makeText(ctx, recentListItem.getText(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -125,25 +130,27 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         try {
             String serializedObject = listItem.toJSON();
 
-            SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.sharedPrreferencesBusStops), Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = this.getSharedPreferences(ConstantHelper.SharedPreferenceRecentBusStops, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
 
 
             Map<String, ?> busStops = sharedPref.getAll();
+            Map<Integer,String> dictBusStops = new HashMap<Integer, String>();
 
-            int numberOfBusStops = busStops.size();
-            String[] values = busStops.values().toArray(new String[busStops.values().size()]);
+            for (Map.Entry<String, ?> entry : busStops.entrySet()) {
+                String objectValue = entry.getValue().toString();
+                int key = Integer.parseInt(entry.getKey());
+                dictBusStops.put(key, objectValue);
+            }
+            Map<Integer, String> treeMap = new TreeMap<Integer, String>(dictBusStops);
+
+            int numberOfBusStops = treeMap.size();
+            String[] values = treeMap.values().toArray(new String[treeMap.values().size()]);
             List<String> listValues = new ArrayList<String>(Arrays.asList(values));
             boolean isValueContained = listValues.contains(listItem.toJSON());
-           // Stack<String> stackOfValues = new Stack<String>();
-            // for (int i = values.length - 1; i >= 0; i--) {
-//            for (int i = 0; i <= values.length - 1; i++) {
-//                Log.d(LOGDEBUGTAG, "first: " + values[i] + "i=" + i);
-//                stackOfValues.add(values[i]);
-//            }
+
             if (!isValueContained) {
                 if (numberOfBusStops == 5) {
-                   // String popObject = stackOfValues.pop();
                     listValues.remove(values.length-1);
                 }
                 listValues.add(0,serializedObject);
@@ -157,10 +164,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 String keyToRemove = entry.getKey();
                 editor.remove(keyToRemove);
             }
-            //  for (Integer i = 0; i <= stackOfValues.size() - 1; i++) {
+
             for (Integer i = 0; i <= listValues.size() - 1; i++) {
                 String valueToSave = listValues.get(i);
-                Log.d(LOGDEBUGTAG, "final: " + valueToSave + " i= " + i);
                 editor.putString(i.toString(), valueToSave);
             }
             editor.commit();

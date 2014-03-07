@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">VarnaTraffic</string>
+    <string name="app_name">Varna Traffic</string>
     <string name="tableHeaderDistance">дист</string>
     <string name="tableHeaderDelay"></string>
     <string name="tableHeaderLeft">идва</string>
@@ -11,7 +11,7 @@
     <string name="selectBusStopButton">Избирам спирка</string>
 
     <string name="tableScheduleHeader">разписание</string>
-    <string name="tableScheduleHeaderNumber">номер</string>
-    <string name="sharedPrreferencesBusStops">RecentBusStops</string>
+    <string name="tableScheduleHeaderNumber">ном</string>
+
 
 </resources>
