@@ -22,7 +22,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListItem> implements Filterable {
-    private ArrayList<AutoCompleteListItem> resultList;
+    private ArrayList<AutoCompleteListItem> resultList = new ArrayList<AutoCompleteListItem>();
    private int viewResourceId;
    private Context resourceContext;
    private LayoutInflater vi;
@@ -72,25 +72,30 @@ public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListIt
     @Override
     public Filter getFilter() {
         Filter filter = new Filter() {
+
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults filterResults = new FilterResults();
-                if (constraint != null) {
-                    // Retrieve the autocomplete results.
-                    resultList = autocomplete(constraint.toString());
+                synchronized (resultList) {
+                    if (constraint != null) {
+                        // Retrieve the autocomplete results.
+                        resultList.clear();
+                        resultList.addAll(autocomplete(constraint.toString()));
 
-                    // Assign the data to the FilterResults
-                    filterResults.values = resultList;
-                    filterResults.count = resultList.size();
+                        // Assign the data to the FilterResults
+                        filterResults.values = resultList;
+                        filterResults.count = resultList.size();
+                    }
+                    return filterResults;
                 }
-                return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 if (results != null && results.count > 0) {
-                    notifyDataSetChanged();
-
+                       // resultList.clear();
+                       // resultList.addAll((ArrayList<AutoCompleteListItem>) results.values);
+                        notifyDataSetChanged();
                 }
                 else {
                     notifyDataSetInvalidated();

@@ -6,11 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created with IntelliJ IDEA.
- * User: miroslav
  * Date: 9/17/13
- * Time: 11:20 AM
- * To change this template use File | Settings | File Templates.
  */
 public class AutoCompleteListItem implements Serializable {
     public AutoCompleteListItem(){

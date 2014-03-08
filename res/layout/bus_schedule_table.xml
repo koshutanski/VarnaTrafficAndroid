@@ -15,20 +15,21 @@
                   android:layout_height="fill_parent"
                   android:orientation="vertical" >
     <TableLayout
-             android:id="@+id/busesTable"
-             android:layout_width="wrap_content"
+             android:id="@+id/busesHeaderTable"
+             android:layout_width="fill_parent"
              android:layout_height="match_parent"
-             android:stretchColumns="0,1" >
+              >
         <TableRow
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:gravity="center_horizontal"
-                android:shrinkColumns="0" >
+                 >
             <TextView
                     android:id="@+id/tableHeaderNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
+                    android:layout_weight="0.2"
                     android:text="@string/tableHeaderNumber"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
@@ -36,6 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
+                    android:layout_weight="0.2"
                     android:text="@string/tableHeaderArrive"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
@@ -43,6 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
+                    android:layout_weight="0.2"
                     android:text="@string/tableHeaderLeft"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
@@ -50,6 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
+                android:layout_weight="0.1"
                 android:text="@string/tableHeaderDelay"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
@@ -57,11 +61,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
+                android:layout_weight="0.2"
                     android:text="@string/tableHeaderDistance"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </TableRow>
     </TableLayout>
+        <TableLayout
+            android:id="@+id/busesTable"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+            </TableLayout>
             </LinearLayout>
         </ScrollView>
 
@@ -77,7 +88,7 @@
             android:layout_height="fill_parent"
             android:orientation="vertical" >
             <TableLayout
-                android:id="@+id/busesScheduleTable"
+                android:id="@+id/busesHeaderScheduleTable"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:stretchColumns="0,1" >
@@ -105,6 +116,12 @@
 
                 </TableRow>
             </TableLayout>
+            <TableLayout
+                android:id="@+id/busesScheduleTable"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:stretchColumns="0,1" >
+                </TableLayout>
         </LinearLayout>
     </ScrollView>
 

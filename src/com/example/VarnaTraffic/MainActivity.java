@@ -43,12 +43,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
         final Context ctx = this;
 
-//           SharedPreferences sharedPrefs = this.getSharedPreferences(getString(R.string.sharedPrreferencesBusStops), Context.MODE_PRIVATE);
+//           SharedPreferences sharedPrefs = this.getSharedPreferences(ConstantHelper.SharedPreferenceRecentBusStops, Context.MODE_PRIVATE);
 //           SharedPreferences.Editor editor = sharedPrefs.edit();
 //           editor.clear().commit();
 
         lvMostRecent = (ListView) findViewById(R.id.lvMostRecent);
         AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
+        autoCompView.setThreshold(2);
         Button selectBusStopButton = (Button) findViewById(R.id.selectBusStopButton);
         autoCompView.setAdapter(new BusStopsAutoCompleteAdapter(this, R.layout.list_item));
         autoCompView.setOnItemClickListener(this);
@@ -115,6 +116,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 autoCompView.setText(recentListItem.getText(),false);
                 listItem=recentListItem;
                 Toast.makeText(ctx, recentListItem.getText(), Toast.LENGTH_SHORT).show();
+                Button selectBusStopButton = (Button) findViewById(R.id.selectBusStopButton);
+                selectBusStopButton.callOnClick();
             }
         });
     }
@@ -174,8 +177,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             Log.e("Exception", "Error trying to save the chosen bus stop", e);
         }
     }
-
-
 }
 
 

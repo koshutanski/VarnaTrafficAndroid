@@ -31,11 +31,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA.
- * User: miroslav
  * Date: 9/18/13
- * Time: 11:43 AM
- * To change this template use File | Settings | File Templates.
  */
 public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveData> {
 
@@ -146,6 +142,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         }
         else
         {
+            Toast.makeText(context,context.getString(R.string.noInternetConnectionMessage), Toast.LENGTH_SHORT);
             return null;
         }
     }
@@ -164,19 +161,24 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         TableRow rowBusScheduleLine;
         TextView busScheduleLine;
         TextView busScheduleTimes;
+        TextView busScheduleEmptyRow;
 
         //TableLayout.LayoutParams llp = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1.0f);
         TableRow.LayoutParams llp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         llp.setMargins(5, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+        llp.weight = (float)0.2;
+
         TableLayout table = (TableLayout) rootView.findViewById(R.id.busesTable);
-        DeleteTableChildRows(table, 1);
+        DeleteTableChildRows(table, 0);
         int rowCounter = 0;
         int rowChildCounter = 0;
-        if(!result.LiveData.isEmpty())
+        if(result != null && result.LiveData != null && !result.LiveData.isEmpty())
         {
         for (LiveDataModel liveData : result.LiveData) {
             rowBusLine = new TableRow(context);
             rowBusLine.setId(1000 + rowCounter);
+            TableRow.LayoutParams rowBusLineLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+            rowBusLine.setLayoutParams(rowBusLineLayout);
 
             busLine = new TextView(context);
             busLine.setId(1001 + rowChildCounter);
@@ -214,6 +216,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
             TableRow.LayoutParams distanceLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
             distanceLayout.setMargins(20, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+            distanceLayout.weight = (float)0.2;
             distanceTextView = new TextView(context);
             distanceTextView.setText(liveData.DistanceLeft);
             distanceTextView.setId(1005 + rowChildCounter);
@@ -242,15 +245,25 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
             emptyHeader.setTypeface(Typeface.SERIF, Typeface.BOLD);
             emptyHeader.setLayoutParams(llp);
             rowBusLine.addView(emptyHeader);
+            table.addView(rowBusLine);
         }
 
 
 
 
-        TableRow.LayoutParams llpSchedules = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
-        llpSchedules.setMargins(5, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+        TableRow.LayoutParams llpSchedulesTime = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        llpSchedulesTime.setMargins(5, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+        llpSchedulesTime.weight= (float)0.5;
+
+
+        TableRow.LayoutParams llpSchedulesLine = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+
+        llpSchedulesTime.weight= (float)0.1;
+
+        TableRow.LayoutParams rowScheduleBusLineLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+
         TableLayout tableSchedule = (TableLayout) rootView.findViewById(R.id.busesScheduleTable);
-        DeleteTableChildRows(tableSchedule, 1);
+        DeleteTableChildRows(tableSchedule, 0);
         int rowScheduleCounter = 0;
         int rowScheduleChildCounter = 0;
         if(!result.LiveData.isEmpty())
@@ -259,12 +272,15 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 rowBusScheduleLine = new TableRow(context);
                 rowBusScheduleLine.setId(1000 + rowScheduleCounter);
 
+                rowBusScheduleLine.setLayoutParams(rowScheduleBusLineLayout);
+
+
                 busScheduleLine = new TextView(context);
                 busScheduleLine.setId(1001 + rowChildCounter);
                 busScheduleLine.setText(scheduleData.getKey());
                 busScheduleLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
                // busScheduleLine.setLayoutParams(llpSchedules);
-                busScheduleLine.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+                busScheduleLine.setLayoutParams(llpSchedulesLine);
 
                 String busLineScheduleToDisplay = "" ;
                 for(ScheduleModel scheduleDetail : scheduleData.getValue())
@@ -274,7 +290,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 busScheduleTimes = new TextView(context);
                 busScheduleTimes.setText(busLineScheduleToDisplay);
                 busScheduleTimes.setId(1002 + rowChildCounter);
-                busScheduleTimes.setLayoutParams(llpSchedules);
+                busScheduleTimes.setLayoutParams(llpSchedulesTime);
 
 
                 rowBusScheduleLine.addView(busScheduleLine);
@@ -287,15 +303,16 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         }
         else
         {
-            rowBusLine = new TableRow(context);
-            rowBusLine.setId(1000 + rowCounter);
+            rowBusScheduleLine = new TableRow(context);
+            rowBusScheduleLine.setId(1000 + rowCounter);
 
             emptyHeader = new TextView(context);
             emptyHeader.setId(1001 + rowChildCounter);
             emptyHeader.setText(res.getString(R.string.tableHeaderEmptyString));
             emptyHeader.setTypeface(Typeface.SERIF, Typeface.BOLD);
             emptyHeader.setLayoutParams(llp);
-            rowBusLine.addView(emptyHeader);
+            rowBusScheduleLine.addView(emptyHeader);
+            tableSchedule.addView(rowBusScheduleLine);
         }
 
 

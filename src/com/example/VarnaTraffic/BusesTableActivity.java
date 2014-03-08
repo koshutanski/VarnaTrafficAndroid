@@ -26,11 +26,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created with IntelliJ IDEA.
- * User: miroslav
  * Date: 9/13/13
- * Time: 5:54 PM
- * To change this template use File | Settings | File Templates.
  */
 public class BusesTableActivity extends Activity implements View.OnClickListener {
     AutoCompleteListItem listItem;
