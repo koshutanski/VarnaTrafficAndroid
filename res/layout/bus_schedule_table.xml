@@ -7,16 +7,16 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/scrollViewBusTable"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
                   android:orientation="vertical" >
     <TableLayout
              android:id="@+id/busesHeaderTable"
-             android:layout_width="fill_parent"
+             android:layout_width="match_parent"
              android:layout_height="match_parent"
               >
         <TableRow
@@ -36,10 +36,10 @@
                     android:id="@+id/tableHeaderArrive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="0.2"
+                android:layout_weight="0.2"
                     android:text="@string/tableHeaderArrive"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="2dp" />
             <TextView
                     android:id="@+id/tableHeaderLeft"
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                android:layout_weight="0.2"
+                    android:layout_weight="0.2"
                     android:text="@string/tableHeaderDistance"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -69,7 +69,7 @@
     </TableLayout>
         <TableLayout
             android:id="@+id/busesTable"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
             </TableLayout>
@@ -84,8 +84,8 @@
         android:layout_height="wrap_content">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
             <TableLayout
                 android:id="@+id/busesHeaderScheduleTable"
@@ -110,7 +110,6 @@
                         android:id="@+id/tableScheduleHeaderEmpty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
                         android:text="@string/tableScheduleHeader"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -118,7 +117,7 @@
             </TableLayout>
             <TableLayout
                 android:id="@+id/busesScheduleTable"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:stretchColumns="0,1" >
                 </TableLayout>
