@@ -1,27 +1,21 @@
-package com.example.VarnaTraffic;
+package com.varnatraffic.VarnaTraffic;
 
 import VarnaTraffic.Helpers.AutoCompleteListItem;
 import VarnaTraffic.Helpers.ConstantHelper;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
-import org.json.JSONObject;
 
 import java.io.*;
 import java.util.*;

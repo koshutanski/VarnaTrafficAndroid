@@ -1,4 +1,4 @@
-package com.example.VarnaTraffic;
+package com.varnatraffic.VarnaTraffic;
 
 import VarnaTraffic.Helpers.LiveDataModel;
 import android.graphics.Typeface;

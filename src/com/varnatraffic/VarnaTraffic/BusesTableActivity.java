@@ -1,27 +1,15 @@
-package com.example.VarnaTraffic;
+package com.varnatraffic.VarnaTraffic;
 
 import VarnaTraffic.Helpers.AutoCompleteListItem;
-import VarnaTraffic.Helpers.BusesLiveData;
-import VarnaTraffic.Helpers.ScheduleModel;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
-import org.json.JSONArray;
-import org.json.JSONException;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 

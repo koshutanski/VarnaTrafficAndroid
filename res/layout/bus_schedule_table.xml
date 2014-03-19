@@ -29,14 +29,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
+                    android:background="#EC7703"
                     android:text="@string/tableHeaderNumber"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
                     android:id="@+id/tableHeaderArrive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_weight="0.05"
+                android:background="#33ec40"
                     android:text="@string/tableHeaderArrive"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_marginLeft="2dp" />
@@ -45,7 +47,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.05"
+                android:background="#ec4a34"
                     android:text="@string/tableHeaderLeft"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
@@ -54,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_weight="0.1"
+                android:background="#eceb42"
                 android:text="@string/tableHeaderDelay"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
@@ -61,7 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
+                android:background="#2740ec"
                     android:text="@string/tableHeaderDistance"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 

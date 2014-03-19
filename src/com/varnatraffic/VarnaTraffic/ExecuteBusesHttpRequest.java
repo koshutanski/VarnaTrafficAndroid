@@ -1,4 +1,4 @@
-package com.example.VarnaTraffic;
+package com.varnatraffic.VarnaTraffic;
 
 import VarnaTraffic.Helpers.AutoCompleteListItem;
 import VarnaTraffic.Helpers.BusesLiveData;
@@ -164,13 +164,14 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
         //TableLayout.LayoutParams llp = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1.0f);
         TableRow.LayoutParams llp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.2f);
+        TableRow.LayoutParams headerNumberLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.3f);
         TableRow.LayoutParams llpDelay = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.1f);
         llpDelay.setMargins(2, 0, 0, 0);
         llp.setMargins(2, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
       //  llp.weight = (float) 0.2;
 
-        TableLayout table = (TableLayout) rootView.findViewById(R.id.busesTable);
-        DeleteTableChildRows(table, 0);
+        TableLayout table = (TableLayout) rootView.findViewById(R.id.busesHeaderTable);
+        DeleteTableChildRows(table, 1);
         int rowCounter = 0;
         int rowChildCounter = 0;
         if (result != null && result.LiveData != null && !result.LiveData.isEmpty()) {
@@ -184,14 +185,14 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 busLine.setId(1001 + rowChildCounter);
                 busLine.setText(liveData.Line);
                 busLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
-
-                busLine.setLayoutParams(llp);
+                busLine.setBackgroundColor(Color.GREEN);
+                busLine.setLayoutParams(headerNumberLayout);
                 //     busLine.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
                 arriveTimeTextView = new TextView(context);
                 arriveTimeTextView.setText(liveData.ArriveTime);
                 arriveTimeTextView.setId(1002 + rowChildCounter);
-
+                arriveTimeTextView.setBackgroundColor(Color.BLUE);
                 arriveTimeTextView.setLayoutParams(llp);
                 arriveTimeTextView.setTextSize(16);
                 //  arriveTimeTextView.setTextColor(Color.GREEN);
@@ -200,7 +201,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 arriveDelay = new TextView(context);
                 arriveDelay.setText(liveData.Delay);
                 arriveDelay.setId(1003 + rowChildCounter);
-
+                arriveDelay.setBackgroundColor(Color.CYAN);
                 arriveDelay.setLayoutParams(llpDelay);
                 if (liveData.Delay != null && liveData.Delay.startsWith("-")) {
                     arriveDelay.setTextColor(Color.GREEN);
@@ -211,7 +212,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 arriveInTextView = new TextView(context);
                 arriveInTextView.setText(liveData.ArriveIn);
                 arriveInTextView.setId(1004 + rowChildCounter);
-
+                arriveInTextView.setBackgroundColor(Color.MAGENTA);
                 arriveInTextView.setLayoutParams(llp);
 
 
@@ -220,6 +221,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 distanceTextView = new TextView(context);
                 distanceTextView.setText(liveData.DistanceLeft);
                 distanceTextView.setId(1005 + rowChildCounter);
+                distanceTextView.setBackgroundColor(Color.RED);
                 distanceTextView.setLayoutParams(distanceLayout);
 
                 rowBusLine.addView(busLine);
