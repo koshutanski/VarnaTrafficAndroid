@@ -25,25 +25,25 @@ public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListIt
     private ArrayList<AutoCompleteListItem> resultList = new ArrayList<AutoCompleteListItem>();
    private int viewResourceId;
    private Context resourceContext;
-   private LayoutInflater vi;
+   private LayoutInflater contexInflater;
     public BusStopsAutoCompleteAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
         viewResourceId = textViewResourceId;
         resourceContext = context;
-        vi = (LayoutInflater) resourceContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        contexInflater = (LayoutInflater) resourceContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = convertView;
-        if (v == null) {
-            v = vi.inflate(viewResourceId, null);
+        View view = convertView;
+        if (view == null) {
+            view = contexInflater.inflate(viewResourceId, null);
         }
         AutoCompleteListItem listItem = resultList.get(position);
         if (listItem != null) {
             //LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            TextView customerNameLabel = (TextView) v.findViewById(R.id.autoCompleteText);
-            AutoCompleteTextView autoComplete = (AutoCompleteTextView) v.findViewById(R.id.autocomplete)  ;
+            TextView customerNameLabel = (TextView) view.findViewById(R.id.autoCompleteText);
+            AutoCompleteTextView autoComplete = (AutoCompleteTextView) view.findViewById(R.id.autocomplete)  ;
                //       customerNameLabel.inflate(resourceContext,R.id.autocomplete, parent);
            // TextView tv = (TextView) getLayoutInflater().inflate(R.layout.list_item, R.id.autocomplete);
           //  TextView customerNameLabel = (TextView)vi.inflate(R.id.autoCompleteText,null);
@@ -54,7 +54,7 @@ public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListIt
                // customerNameLabel.setWidth(autoComplete.getWidth());
             }
         }
-        return v;
+        return view;
     }
 
     @Override

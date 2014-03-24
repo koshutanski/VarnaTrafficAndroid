@@ -162,13 +162,29 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         TextView busScheduleTimes;
         TextView busScheduleEmptyRow;
 
+        int dpValue = 2; // margin in dips
+        float currentDensity = context.getResources().getDisplayMetrics().density;
+        int leftMargin = (int)(dpValue * currentDensity); // margin in pixels
+
         //TableLayout.LayoutParams llp = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1.0f);
-        TableRow.LayoutParams llp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.2f);
-        TableRow.LayoutParams headerNumberLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.3f);
-        TableRow.LayoutParams llpDelay = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.1f);
-        llpDelay.setMargins(2, 0, 0, 0);
-        llp.setMargins(2, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+        TableRow.LayoutParams llp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams headerNumberLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams llpDelay = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        llpDelay.setMargins(leftMargin, 0, 0, 0);
+        llp.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+        headerNumberLayout.setMargins(leftMargin, 0, 0, 0);
       //  llp.weight = (float) 0.2;
+      TextView busHeaderNumberView =  (TextView)rootView.findViewById(R.id.tableHeaderNumber);
+        TextView busHeaderArriveView =  (TextView)rootView.findViewById(R.id.tableHeaderArrive);
+        TextView busHeaderDistanceView =  (TextView)rootView.findViewById(R.id.tableHeaderDistance);
+        TextView busHeaderDelayView =  (TextView)rootView.findViewById(R.id.tableHeaderDelay);
+        TextView busHeaderLeftView =  (TextView)rootView.findViewById(R.id.tableHeaderLeft);
+
+        int busHeaderNumberWidth = busHeaderNumberView.getWidth();
+        int busHeaderArriveWidth = busHeaderArriveView.getWidth();
+        int busHeaderDistanceWidth = busHeaderDistanceView.getWidth();
+        int busHeaderDelayWidth = busHeaderDelayView.getWidth();
+        int busHeaderLeftWidth = busHeaderLeftView.getWidth();
 
         TableLayout table = (TableLayout) rootView.findViewById(R.id.busesHeaderTable);
         DeleteTableChildRows(table, 1);
@@ -187,6 +203,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 busLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
                 busLine.setBackgroundColor(Color.GREEN);
                 busLine.setLayoutParams(headerNumberLayout);
+                busLine.setWidth(busHeaderNumberWidth);
                 //     busLine.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
                 arriveTimeTextView = new TextView(context);
@@ -196,7 +213,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 arriveTimeTextView.setLayoutParams(llp);
                 arriveTimeTextView.setTextSize(16);
                 //  arriveTimeTextView.setTextColor(Color.GREEN);
-
+                arriveTimeTextView.setWidth(busHeaderArriveWidth);
 
                 arriveDelay = new TextView(context);
                 arriveDelay.setText(liveData.Delay);
@@ -208,21 +225,23 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 } else {
                     arriveDelay.setTextColor(Color.RED);
                 }
+                arriveDelay.setWidth(busHeaderDelayWidth);
 
                 arriveInTextView = new TextView(context);
                 arriveInTextView.setText(liveData.ArriveIn);
                 arriveInTextView.setId(1004 + rowChildCounter);
                 arriveInTextView.setBackgroundColor(Color.MAGENTA);
                 arriveInTextView.setLayoutParams(llp);
+                arriveInTextView.setWidth(busHeaderLeftWidth);
 
-
-                TableRow.LayoutParams distanceLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.2f);
-                distanceLayout.setMargins(2, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+                TableRow.LayoutParams distanceLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+                distanceLayout.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
                 distanceTextView = new TextView(context);
                 distanceTextView.setText(liveData.DistanceLeft);
                 distanceTextView.setId(1005 + rowChildCounter);
                 distanceTextView.setBackgroundColor(Color.RED);
                 distanceTextView.setLayoutParams(distanceLayout);
+                distanceTextView.setWidth(busHeaderDistanceWidth);
 
                 rowBusLine.addView(busLine);
                 rowBusLine.addView(arriveTimeTextView);

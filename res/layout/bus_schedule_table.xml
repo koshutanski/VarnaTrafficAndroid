@@ -29,10 +29,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="0.1"
-                    android:background="#EC7703"
+                android:background="#EC7703"
                     android:text="@string/tableHeaderNumber"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="0.05" />
             <TextView
                     android:id="@+id/tableHeaderArrive"
                     android:layout_width="wrap_content"

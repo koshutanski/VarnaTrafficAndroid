@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -107,11 +108,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
               //  SaveMostRecentBusStop(recentListItem);
                 // startActivity(intent);
                 AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
-                autoCompView.setText(recentListItem.getText(),false);
+                int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+                if (currentapiVersion >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+                    autoCompView.setText(recentListItem.getText(),false);
+                }
+
                 listItem=recentListItem;
                 Toast.makeText(ctx, recentListItem.getText(), Toast.LENGTH_SHORT).show();
                 Button selectBusStopButton = (Button) findViewById(R.id.selectBusStopButton);
-                selectBusStopButton.callOnClick();
+                selectBusStopButton.performClick();
             }
         });
     }
