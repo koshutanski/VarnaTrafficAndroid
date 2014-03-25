@@ -10,8 +10,10 @@
     <string name="refreshButton">Обнови</string>
     <string name="selectBusStopButton">Избирам спирка</string>
 
+    <string name="mainActivityLast5Label">Последните 5 спирки</string>
+
     <string name="tableScheduleHeader">разписание</string>
-    <string name="tableScheduleHeaderNumber">ном</string>
+    <string name="tableScheduleHeaderNumber">номер</string>
 
 
     <string name="noInternetConnectionMessage">Няма интернет връзка</string>

@@ -33,7 +33,9 @@ public class BusesTableActivity extends Activity implements View.OnClickListener
 
         Toast.makeText(this, listItem.getText(),Toast.LENGTH_SHORT).show();
         View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+        setTitle(listItem.getText());
         callAsynchronousTask(this,rootView,listItem.getId());
+
     }
 
     @Override

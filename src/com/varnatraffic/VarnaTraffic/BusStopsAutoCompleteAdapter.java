@@ -38,20 +38,22 @@ public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListIt
         if (view == null) {
             view = contexInflater.inflate(viewResourceId, null);
         }
-        AutoCompleteListItem listItem = resultList.get(position);
-        if (listItem != null) {
-            //LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if(resultList.size() > 0) {
+            AutoCompleteListItem listItem = resultList.get(position);
+            if (listItem != null) {
+                //LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            TextView customerNameLabel = (TextView) view.findViewById(R.id.autoCompleteText);
-            AutoCompleteTextView autoComplete = (AutoCompleteTextView) view.findViewById(R.id.autocomplete)  ;
-               //       customerNameLabel.inflate(resourceContext,R.id.autocomplete, parent);
-           // TextView tv = (TextView) getLayoutInflater().inflate(R.layout.list_item, R.id.autocomplete);
-          //  TextView customerNameLabel = (TextView)vi.inflate(R.id.autoCompleteText,null);
+                TextView customerNameLabel = (TextView) view.findViewById(R.id.autoCompleteText);
+                AutoCompleteTextView autoComplete = (AutoCompleteTextView) view.findViewById(R.id.autocomplete);
+                //       customerNameLabel.inflate(resourceContext,R.id.autocomplete, parent);
+                // TextView tv = (TextView) getLayoutInflater().inflate(R.layout.list_item, R.id.autocomplete);
+                //  TextView customerNameLabel = (TextView)vi.inflate(R.id.autoCompleteText,null);
 
-            if (customerNameLabel != null) {
+                if (customerNameLabel != null) {
 //              Log.i(MY_DEBUG_TAG, "getView Customer Name:"+customer.getName());
-                customerNameLabel.setText(listItem.getText());
-               // customerNameLabel.setWidth(autoComplete.getWidth());
+                    customerNameLabel.setText(listItem.getText());
+                    // customerNameLabel.setWidth(autoComplete.getWidth());
+                }
             }
         }
         return view;

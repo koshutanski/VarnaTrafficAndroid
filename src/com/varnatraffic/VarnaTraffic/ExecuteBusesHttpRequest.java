@@ -186,8 +186,8 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         int busHeaderDelayWidth = busHeaderDelayView.getWidth();
         int busHeaderLeftWidth = busHeaderLeftView.getWidth();
 
-        TableLayout table = (TableLayout) rootView.findViewById(R.id.busesHeaderTable);
-        DeleteTableChildRows(table, 1);
+        TableLayout table = (TableLayout) rootView.findViewById(R.id.busesTable);
+        DeleteTableChildRows(table, 0);
         int rowCounter = 0;
         int rowChildCounter = 0;
         if (result != null && result.LiveData != null && !result.LiveData.isEmpty()) {
@@ -201,7 +201,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 busLine.setId(1001 + rowChildCounter);
                 busLine.setText(liveData.Line);
                 busLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
-                busLine.setBackgroundColor(Color.GREEN);
+           //     busLine.setBackgroundColor(Color.GREEN);
                 busLine.setLayoutParams(headerNumberLayout);
                 busLine.setWidth(busHeaderNumberWidth);
                 //     busLine.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
@@ -209,7 +209,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 arriveTimeTextView = new TextView(context);
                 arriveTimeTextView.setText(liveData.ArriveTime);
                 arriveTimeTextView.setId(1002 + rowChildCounter);
-                arriveTimeTextView.setBackgroundColor(Color.BLUE);
+           //     arriveTimeTextView.setBackgroundColor(Color.BLUE);
                 arriveTimeTextView.setLayoutParams(llp);
                 arriveTimeTextView.setTextSize(16);
                 //  arriveTimeTextView.setTextColor(Color.GREEN);
@@ -218,7 +218,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 arriveDelay = new TextView(context);
                 arriveDelay.setText(liveData.Delay);
                 arriveDelay.setId(1003 + rowChildCounter);
-                arriveDelay.setBackgroundColor(Color.CYAN);
+             //   arriveDelay.setBackgroundColor(Color.CYAN);
                 arriveDelay.setLayoutParams(llpDelay);
                 if (liveData.Delay != null && liveData.Delay.startsWith("-")) {
                     arriveDelay.setTextColor(Color.GREEN);
@@ -230,7 +230,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 arriveInTextView = new TextView(context);
                 arriveInTextView.setText(liveData.ArriveIn);
                 arriveInTextView.setId(1004 + rowChildCounter);
-                arriveInTextView.setBackgroundColor(Color.MAGENTA);
+             //   arriveInTextView.setBackgroundColor(Color.MAGENTA);
                 arriveInTextView.setLayoutParams(llp);
                 arriveInTextView.setWidth(busHeaderLeftWidth);
 
@@ -239,7 +239,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 distanceTextView = new TextView(context);
                 distanceTextView.setText(liveData.DistanceLeft);
                 distanceTextView.setId(1005 + rowChildCounter);
-                distanceTextView.setBackgroundColor(Color.RED);
+              //  distanceTextView.setBackgroundColor(Color.RED);
                 distanceTextView.setLayoutParams(distanceLayout);
                 distanceTextView.setWidth(busHeaderDistanceWidth);
 
@@ -268,16 +268,17 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         }
 
 
-
+        TextView busHeaderScheduleLine =  (TextView)rootView.findViewById(R.id.tableScheduleHeaderNumber);
+        int busHeaderScheduleLineWidth = busHeaderScheduleLine.getWidth();
 
         TableRow.LayoutParams llpSchedulesTime = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
-        llpSchedulesTime.setMargins(5, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+        llpSchedulesTime.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
         llpSchedulesTime.weight= (float)0.5;
 
 
-        TableRow.LayoutParams llpSchedulesLine = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        TableRow.LayoutParams llpSchedulesLine = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        llpSchedulesLine.setMargins(leftMargin, 0, 0, 0);
 
-        llpSchedulesLine.weight= (float)0.1;
 
         TableRow.LayoutParams rowScheduleBusLineLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
 
@@ -300,6 +301,8 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 busScheduleLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
                // busScheduleLine.setLayoutParams(llpSchedules);
                 busScheduleLine.setLayoutParams(llpSchedulesLine);
+         //       busScheduleLine.setBackgroundColor(Color.RED);
+                busScheduleLine.setWidth(busHeaderScheduleLineWidth);
 
                 String busLineScheduleToDisplay = "" ;
                 for(ScheduleModel scheduleDetail : scheduleData.getValue())
@@ -310,7 +313,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 busScheduleTimes.setText(busLineScheduleToDisplay);
                 busScheduleTimes.setId(1002 + rowChildCounter);
                 busScheduleTimes.setLayoutParams(llpSchedulesTime);
-
+          //      busScheduleTimes.setBackgroundColor(Color.BLUE);
 
                 rowBusScheduleLine.addView(busScheduleLine);
                 rowBusScheduleLine.addView(busScheduleTimes);

@@ -109,9 +109,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 // startActivity(intent);
                 AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
                 int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-                if (currentapiVersion >= Build.VERSION_CODES.JELLY_BEAN_MR1){
-                    autoCompView.setText(recentListItem.getText(),false);
-                }
+//                if (currentapiVersion >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+//                    autoCompView.setText(recentListItem.getText(),false);
+//                }
 
                 listItem=recentListItem;
                 Toast.makeText(ctx, recentListItem.getText(), Toast.LENGTH_SHORT).show();
