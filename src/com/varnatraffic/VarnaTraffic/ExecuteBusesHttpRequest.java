@@ -4,7 +4,10 @@ import VarnaTraffic.Helpers.AutoCompleteListItem;
 import VarnaTraffic.Helpers.BusesLiveData;
 import VarnaTraffic.Helpers.LiveDataModel;
 import VarnaTraffic.Helpers.ScheduleModel;
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -52,7 +55,10 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
     @Override
     protected BusesLiveData doInBackground(Integer... params) {
+        Log.d(LOG_TAG,"Starting Async Task");
         BusesLiveData resultData = null;
+        try{
+
         if(isInternetConnectionAvailable())
         {
 
@@ -73,12 +79,15 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
             }
         } catch (MalformedURLException e) {
             Log.e(LOG_TAG, "Error processing Places API URL", e);
+            e.printStackTrace();
             return resultData;
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error connecting to Places API", e);
+            e.printStackTrace();
             return resultData;
         } catch (Exception e) {
             Log.e(LOG_TAG, "Error executing", e);
+            e.printStackTrace();
             return resultData;
         } finally {
             if (conn != null) {
@@ -122,6 +131,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                     busesSchedule.put(key, scheduleModuleList);
                 } catch (JSONException e) {
                     Log.e(LOG_TAG, "Error executing", e);
+                    e.printStackTrace();
                     return resultData;
                     // Something went wrong!
                 }
@@ -132,209 +142,252 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
             resultData.LiveData = liveDataModelList;
             resultData.ScheduleData = busesSchedule;
+            resultData.IsInternetConnection = true;
             return resultData;
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Cannot process JSON results", e);
+            resultData = new BusesLiveData();
+            resultData.IsInternetConnection = false;
         }
 
         }
         else
         {
-            Toast.makeText(context,context.getString(R.string.noInternetConnectionMessage), Toast.LENGTH_SHORT).show();
+            Log.d(LOG_TAG,"Toast no internet connection");
         }
+        Log.d(LOG_TAG,"Returning resultData");
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+    }
         return resultData;
+
     }
 
     @Override
     protected void onPostExecute(BusesLiveData result) {
-        Resources res = context.getResources();
-        TextView arriveTimeTextView;
-        TextView arriveDelay;
-        TextView arriveInTextView;
-        TextView distanceTextView;
-        TextView busLine;
-        TextView emptyHeader;
-        TableRow rowBusLine;
+        if(result != null && result.IsInternetConnection) {
+            Log.d(LOG_TAG, "Async PostExecute");
+            Resources res = context.getResources();
+            TextView arriveTimeTextView;
+            TextView arriveDelay;
+            TextView arriveInTextView;
+            TextView distanceTextView;
+            TextView busLine;
+            TextView emptyHeader;
+            TableRow rowBusLine;
 
-        TableRow rowBusScheduleLine;
-        TextView busScheduleLine;
-        TextView busScheduleTimes;
-        TextView busScheduleEmptyRow;
+            TableRow rowBusScheduleLine;
+            TextView busScheduleLine;
+            TextView busScheduleTimes;
+            TextView busScheduleEmptyRow;
 
-        int dpValue = 2; // margin in dips
-        float currentDensity = context.getResources().getDisplayMetrics().density;
-        int leftMargin = (int)(dpValue * currentDensity); // margin in pixels
+            int dpValue = 2; // margin in dips
+            float currentDensity = context.getResources().getDisplayMetrics().density;
+            int leftMargin = (int) (dpValue * currentDensity); // margin in pixels
 
-        //TableLayout.LayoutParams llp = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1.0f);
-        TableRow.LayoutParams llp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-        TableRow.LayoutParams headerNumberLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-        TableRow.LayoutParams llpDelay = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-        llpDelay.setMargins(leftMargin, 0, 0, 0);
-        llp.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
-        headerNumberLayout.setMargins(leftMargin, 0, 0, 0);
-      //  llp.weight = (float) 0.2;
-      TextView busHeaderNumberView =  (TextView)rootView.findViewById(R.id.tableHeaderNumber);
-        TextView busHeaderArriveView =  (TextView)rootView.findViewById(R.id.tableHeaderArrive);
-        TextView busHeaderDistanceView =  (TextView)rootView.findViewById(R.id.tableHeaderDistance);
-        TextView busHeaderDelayView =  (TextView)rootView.findViewById(R.id.tableHeaderDelay);
-        TextView busHeaderLeftView =  (TextView)rootView.findViewById(R.id.tableHeaderLeft);
+            //TableLayout.LayoutParams llp = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1.0f);
+            TableRow.LayoutParams llp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+            TableRow.LayoutParams headerNumberLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+            TableRow.LayoutParams llpDelay = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+            llpDelay.setMargins(leftMargin, 0, 0, 0);
+            llp.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+            headerNumberLayout.setMargins(leftMargin, 0, 0, 0);
+            //  llp.weight = (float) 0.2;
+            TextView busHeaderNumberView = (TextView) rootView.findViewById(R.id.tableHeaderNumber);
+            TextView busHeaderArriveView = (TextView) rootView.findViewById(R.id.tableHeaderArrive);
+            TextView busHeaderDistanceView = (TextView) rootView.findViewById(R.id.tableHeaderDistance);
+            TextView busHeaderDelayView = (TextView) rootView.findViewById(R.id.tableHeaderDelay);
+            TextView busHeaderLeftView = (TextView) rootView.findViewById(R.id.tableHeaderLeft);
 
-        int busHeaderNumberWidth = busHeaderNumberView.getWidth();
-        int busHeaderArriveWidth = busHeaderArriveView.getWidth();
-        int busHeaderDistanceWidth = busHeaderDistanceView.getWidth();
-        int busHeaderDelayWidth = busHeaderDelayView.getWidth();
-        int busHeaderLeftWidth = busHeaderLeftView.getWidth();
+            int busHeaderNumberWidth = busHeaderNumberView.getWidth();
+            int busHeaderArriveWidth = busHeaderArriveView.getWidth();
+            int busHeaderDistanceWidth = busHeaderDistanceView.getWidth();
+            int busHeaderDelayWidth = busHeaderDelayView.getWidth();
+            int busHeaderLeftWidth = busHeaderLeftView.getWidth();
 
-        TableLayout table = (TableLayout) rootView.findViewById(R.id.busesTable);
-        DeleteTableChildRows(table, 0);
-        int rowCounter = 0;
-        int rowChildCounter = 0;
-        if (result != null && result.LiveData != null && !result.LiveData.isEmpty()) {
-            for (LiveDataModel liveData : result.LiveData) {
+            TableLayout table = (TableLayout) rootView.findViewById(R.id.busesTable);
+            DeleteTableChildRows(table, 0);
+            int rowCounter = 0;
+            int rowChildCounter = 0;
+            if (result.LiveData != null && !result.LiveData.isEmpty()) {
+                for (LiveDataModel liveData : result.LiveData) {
+                    rowBusLine = new TableRow(context);
+                    rowBusLine.setId(1000 + rowCounter);
+                    TableRow.LayoutParams rowBusLineLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+                    rowBusLine.setLayoutParams(rowBusLineLayout);
+
+                    busLine = new TextView(context);
+                    busLine.setId(1001 + rowChildCounter);
+                    busLine.setText(liveData.Line);
+                    busLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
+                    //     busLine.setBackgroundColor(Color.GREEN);
+                    busLine.setLayoutParams(headerNumberLayout);
+                    busLine.setWidth(busHeaderNumberWidth);
+                    //     busLine.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+
+                    arriveTimeTextView = new TextView(context);
+                    arriveTimeTextView.setText(liveData.ArriveTime);
+                    arriveTimeTextView.setId(1002 + rowChildCounter);
+                    //     arriveTimeTextView.setBackgroundColor(Color.BLUE);
+                    arriveTimeTextView.setLayoutParams(llp);
+                    arriveTimeTextView.setTextSize(16);
+                    //  arriveTimeTextView.setTextColor(Color.GREEN);
+                    arriveTimeTextView.setWidth(busHeaderArriveWidth);
+
+                    arriveDelay = new TextView(context);
+                    arriveDelay.setText(liveData.Delay);
+                    arriveDelay.setId(1003 + rowChildCounter);
+                    //   arriveDelay.setBackgroundColor(Color.CYAN);
+                    arriveDelay.setLayoutParams(llpDelay);
+                    if (liveData.Delay != null && liveData.Delay.startsWith("-")) {
+                        arriveDelay.setTextColor(Color.GREEN);
+                    } else {
+                        arriveDelay.setTextColor(Color.RED);
+                    }
+                    arriveDelay.setWidth(busHeaderDelayWidth);
+
+                    arriveInTextView = new TextView(context);
+                    arriveInTextView.setText(liveData.ArriveIn);
+                    arriveInTextView.setId(1004 + rowChildCounter);
+                    //   arriveInTextView.setBackgroundColor(Color.MAGENTA);
+                    arriveInTextView.setLayoutParams(llp);
+                    arriveInTextView.setWidth(busHeaderLeftWidth);
+
+                    TableRow.LayoutParams distanceLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+                    distanceLayout.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+                    distanceTextView = new TextView(context);
+                    distanceTextView.setText(liveData.DistanceLeft);
+                    distanceTextView.setId(1005 + rowChildCounter);
+                    //  distanceTextView.setBackgroundColor(Color.RED);
+                    distanceTextView.setLayoutParams(distanceLayout);
+                    distanceTextView.setWidth(busHeaderDistanceWidth);
+
+                    rowBusLine.addView(busLine);
+                    rowBusLine.addView(arriveTimeTextView);
+                    rowBusLine.addView(arriveInTextView);
+                    rowBusLine.addView(arriveDelay);
+                    rowBusLine.addView(distanceTextView);
+
+                    table.addView(rowBusLine);
+                    rowChildCounter++;
+                    rowCounter++;
+
+                }
+            } else {
                 rowBusLine = new TableRow(context);
                 rowBusLine.setId(1000 + rowCounter);
-                TableRow.LayoutParams rowBusLineLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
-                rowBusLine.setLayoutParams(rowBusLineLayout);
 
-                busLine = new TextView(context);
-                busLine.setId(1001 + rowChildCounter);
-                busLine.setText(liveData.Line);
-                busLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
-           //     busLine.setBackgroundColor(Color.GREEN);
-                busLine.setLayoutParams(headerNumberLayout);
-                busLine.setWidth(busHeaderNumberWidth);
-                //     busLine.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-
-                arriveTimeTextView = new TextView(context);
-                arriveTimeTextView.setText(liveData.ArriveTime);
-                arriveTimeTextView.setId(1002 + rowChildCounter);
-           //     arriveTimeTextView.setBackgroundColor(Color.BLUE);
-                arriveTimeTextView.setLayoutParams(llp);
-                arriveTimeTextView.setTextSize(16);
-                //  arriveTimeTextView.setTextColor(Color.GREEN);
-                arriveTimeTextView.setWidth(busHeaderArriveWidth);
-
-                arriveDelay = new TextView(context);
-                arriveDelay.setText(liveData.Delay);
-                arriveDelay.setId(1003 + rowChildCounter);
-             //   arriveDelay.setBackgroundColor(Color.CYAN);
-                arriveDelay.setLayoutParams(llpDelay);
-                if (liveData.Delay != null && liveData.Delay.startsWith("-")) {
-                    arriveDelay.setTextColor(Color.GREEN);
-                } else {
-                    arriveDelay.setTextColor(Color.RED);
-                }
-                arriveDelay.setWidth(busHeaderDelayWidth);
-
-                arriveInTextView = new TextView(context);
-                arriveInTextView.setText(liveData.ArriveIn);
-                arriveInTextView.setId(1004 + rowChildCounter);
-             //   arriveInTextView.setBackgroundColor(Color.MAGENTA);
-                arriveInTextView.setLayoutParams(llp);
-                arriveInTextView.setWidth(busHeaderLeftWidth);
-
-                TableRow.LayoutParams distanceLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-                distanceLayout.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
-                distanceTextView = new TextView(context);
-                distanceTextView.setText(liveData.DistanceLeft);
-                distanceTextView.setId(1005 + rowChildCounter);
-              //  distanceTextView.setBackgroundColor(Color.RED);
-                distanceTextView.setLayoutParams(distanceLayout);
-                distanceTextView.setWidth(busHeaderDistanceWidth);
-
-                rowBusLine.addView(busLine);
-                rowBusLine.addView(arriveTimeTextView);
-                rowBusLine.addView(arriveInTextView);
-                rowBusLine.addView(arriveDelay);
-                rowBusLine.addView(distanceTextView);
-
+                emptyHeader = new TextView(context);
+                emptyHeader.setId(1001 + rowChildCounter);
+                emptyHeader.setText(res.getString(R.string.tableHeaderEmptyString));
+                emptyHeader.setTypeface(Typeface.SERIF, Typeface.BOLD);
+                emptyHeader.setLayoutParams(llp);
+                rowBusLine.addView(emptyHeader);
                 table.addView(rowBusLine);
-                rowChildCounter++;
-                rowCounter++;
-
             }
-        } else {
-            rowBusLine = new TableRow(context);
-            rowBusLine.setId(1000 + rowCounter);
-
-            emptyHeader = new TextView(context);
-            emptyHeader.setId(1001 + rowChildCounter);
-            emptyHeader.setText(res.getString(R.string.tableHeaderEmptyString));
-            emptyHeader.setTypeface(Typeface.SERIF, Typeface.BOLD);
-            emptyHeader.setLayoutParams(llp);
-            rowBusLine.addView(emptyHeader);
-            table.addView(rowBusLine);
-        }
 
 
-        TextView busHeaderScheduleLine =  (TextView)rootView.findViewById(R.id.tableScheduleHeaderNumber);
-        int busHeaderScheduleLineWidth = busHeaderScheduleLine.getWidth();
+            TextView busHeaderScheduleLine = (TextView) rootView.findViewById(R.id.tableScheduleHeaderNumber);
+            int busHeaderScheduleLineWidth = busHeaderScheduleLine.getWidth();
 
-        TableRow.LayoutParams llpSchedulesTime = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
-        llpSchedulesTime.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
-        llpSchedulesTime.weight= (float)0.5;
-
-
-        TableRow.LayoutParams llpSchedulesLine = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-        llpSchedulesLine.setMargins(leftMargin, 0, 0, 0);
+            TableRow.LayoutParams llpSchedulesTime = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+            llpSchedulesTime.setMargins(leftMargin, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+            llpSchedulesTime.weight = (float) 0.5;
 
 
-        TableRow.LayoutParams rowScheduleBusLineLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
-
-        TableLayout tableSchedule = (TableLayout) rootView.findViewById(R.id.busesScheduleTable);
-        DeleteTableChildRows(tableSchedule, 0);
-        int rowScheduleCounter = 0;
-        int rowScheduleChildCounter = 0;
-        if(result != null && result.ScheduleData != null && !result.ScheduleData.isEmpty())
-        {
-            for (Map.Entry<String,ArrayList<ScheduleModel>> scheduleData : result.ScheduleData.entrySet()) {
-                rowBusScheduleLine = new TableRow(context);
-                rowBusScheduleLine.setId(1000 + rowScheduleCounter);
-
-                rowBusScheduleLine.setLayoutParams(rowScheduleBusLineLayout);
+            TableRow.LayoutParams llpSchedulesLine = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+            llpSchedulesLine.setMargins(leftMargin, 0, 0, 0);
 
 
-                busScheduleLine = new TextView(context);
-                busScheduleLine.setId(1001 + rowChildCounter);
-                busScheduleLine.setText(scheduleData.getKey());
-                busScheduleLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
-               // busScheduleLine.setLayoutParams(llpSchedules);
-                busScheduleLine.setLayoutParams(llpSchedulesLine);
-         //       busScheduleLine.setBackgroundColor(Color.RED);
-                busScheduleLine.setWidth(busHeaderScheduleLineWidth);
+            TableRow.LayoutParams rowScheduleBusLineLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
 
-                String busLineScheduleToDisplay = "" ;
-                for(ScheduleModel scheduleDetail : scheduleData.getValue())
-                {
-                    busLineScheduleToDisplay += scheduleDetail.Text + " ";
+            TableLayout tableSchedule = (TableLayout) rootView.findViewById(R.id.busesScheduleTable);
+            DeleteTableChildRows(tableSchedule, 0);
+            int rowScheduleCounter = 0;
+            int rowScheduleChildCounter = 0;
+            if (result.ScheduleData != null && !result.ScheduleData.isEmpty()) {
+                for (Map.Entry<String, ArrayList<ScheduleModel>> scheduleData : result.ScheduleData.entrySet()) {
+                    rowBusScheduleLine = new TableRow(context);
+                    rowBusScheduleLine.setId(1000 + rowScheduleCounter);
+
+                    rowBusScheduleLine.setLayoutParams(rowScheduleBusLineLayout);
+
+
+                    busScheduleLine = new TextView(context);
+                    busScheduleLine.setId(1001 + rowChildCounter);
+                    busScheduleLine.setText(scheduleData.getKey());
+                    busScheduleLine.setTypeface(Typeface.SERIF, Typeface.BOLD);
+                    // busScheduleLine.setLayoutParams(llpSchedules);
+                    busScheduleLine.setLayoutParams(llpSchedulesLine);
+                    //       busScheduleLine.setBackgroundColor(Color.RED);
+                    busScheduleLine.setWidth(busHeaderScheduleLineWidth);
+
+                    String busLineScheduleToDisplay = "";
+                    for (ScheduleModel scheduleDetail : scheduleData.getValue()) {
+                        busLineScheduleToDisplay += scheduleDetail.Text + " ";
+                    }
+                    busScheduleTimes = new TextView(context);
+                    busScheduleTimes.setText(busLineScheduleToDisplay);
+                    busScheduleTimes.setId(1002 + rowChildCounter);
+                    busScheduleTimes.setLayoutParams(llpSchedulesTime);
+                    //      busScheduleTimes.setBackgroundColor(Color.BLUE);
+
+                    rowBusScheduleLine.addView(busScheduleLine);
+                    rowBusScheduleLine.addView(busScheduleTimes);
+                    tableSchedule.addView(rowBusScheduleLine);
+                    rowScheduleCounter++;
+                    rowScheduleChildCounter++;
+
                 }
-                busScheduleTimes = new TextView(context);
-                busScheduleTimes.setText(busLineScheduleToDisplay);
-                busScheduleTimes.setId(1002 + rowChildCounter);
-                busScheduleTimes.setLayoutParams(llpSchedulesTime);
-          //      busScheduleTimes.setBackgroundColor(Color.BLUE);
+            } else {
+                rowBusScheduleLine = new TableRow(context);
+                rowBusScheduleLine.setId(1000 + rowCounter);
 
-                rowBusScheduleLine.addView(busScheduleLine);
-                rowBusScheduleLine.addView(busScheduleTimes);
+                emptyHeader = new TextView(context);
+                emptyHeader.setId(1001 + rowChildCounter);
+                emptyHeader.setText(res.getString(R.string.tableHeaderEmptyString));
+                emptyHeader.setTypeface(Typeface.SERIF, Typeface.BOLD);
+                emptyHeader.setLayoutParams(llp);
+                rowBusScheduleLine.addView(emptyHeader);
                 tableSchedule.addView(rowBusScheduleLine);
-                rowScheduleCounter++;
-                rowScheduleChildCounter++;
-
             }
         }
         else
         {
-            rowBusScheduleLine = new TableRow(context);
-            rowBusScheduleLine.setId(1000 + rowCounter);
+            AlertDialog alertDialog = new AlertDialog.Builder(context).create()
+            if(result == null) {
 
-            emptyHeader = new TextView(context);
-            emptyHeader.setId(1001 + rowChildCounter);
-            emptyHeader.setText(res.getString(R.string.tableHeaderEmptyString));
-            emptyHeader.setTypeface(Typeface.SERIF, Typeface.BOLD);
-            emptyHeader.setLayoutParams(llp);
-            rowBusScheduleLine.addView(emptyHeader);
-            tableSchedule.addView(rowBusScheduleLine);
+
+                alertDialog.setTitle("Съобщение");
+                alertDialog.setMessage("Грешка при достъпа на към сървъра.");
+                alertDialog.setCancelable(false);
+                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                alertDialog.show();
+            }
+            else
+            {
+
+                alertDialog.setTitle("Съобщение");
+                alertDialog.setMessage("Няма интернет връзка, проверете дали сте свързани към интернет.");
+                alertDialog.setCancelable(false);
+                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                alertDialog.show();
+
+
+            }
         }
 
 
@@ -363,12 +416,22 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
     private Boolean isInternetConnectionAvailable()
     {
+        Boolean isConnected = false;
+        try {
+
+            Log.d(LOG_TAG,"Checking Internet connection...");
         ConnectivityManager cm =
                 (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        Boolean isConnected = activeNetwork != null &&
+            isConnected =  activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
+        Log.d(LOG_TAG,"Internet Connection:"+ isConnected);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
         return isConnected;
     }
 

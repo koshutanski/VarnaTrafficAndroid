@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_varnatraffic" default="compile.module.varnatraffic">
+  <dirname property="module.varnatraffic.basedir" file="${ant.file.module_varnatraffic}"/>
+  
+  <property name="module.jdk.home.varnatraffic" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.varnatraffic" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.varnatraffic" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.varnatraffic" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="varnatraffic.output.dir" value="${module.varnatraffic.basedir}/out/production/VarnaTraffic"/>
+  <property name="varnatraffic.testoutput.dir" value="${module.varnatraffic.basedir}/out/test/VarnaTraffic"/>
+  
+  <path id="varnatraffic.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="varnatraffic.module.production.classpath">
+    <path refid="${module.jdk.classpath.varnatraffic}"/>
+  </path>
+  
+  <path id="varnatraffic.runtime.production.module.classpath">
+    <pathelement location="${varnatraffic.output.dir}"/>
+  </path>
+  
+  <path id="varnatraffic.module.classpath">
+    <path refid="${module.jdk.classpath.varnatraffic}"/>
+    <pathelement location="${varnatraffic.output.dir}"/>
+  </path>
+  
+  <path id="varnatraffic.runtime.module.classpath">
+    <pathelement location="${varnatraffic.testoutput.dir}"/>
+    <pathelement location="${varnatraffic.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.varnatraffic">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.varnatraffic">
+    <patternset refid="excluded.from.module.varnatraffic"/>
+  </patternset>
+  
+  <path id="varnatraffic.module.sourcepath">
+    <dirset dir="${module.varnatraffic.basedir}">
+      <include name="src"/>
+      <include name="gen"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.varnatraffic" depends="compile.module.varnatraffic.production,compile.module.varnatraffic.tests" description="Compile module VarnaTraffic"/>
+  
+  <target name="compile.module.varnatraffic.production" depends="register.custom.compilers" description="Compile module VarnaTraffic; production classes">
+    <mkdir dir="${varnatraffic.output.dir}"/>
+    <javac2 destdir="${varnatraffic.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.varnatraffic}/javac">
+      <compilerarg line="${compiler.args.varnatraffic}"/>
+      <bootclasspath refid="varnatraffic.module.bootclasspath"/>
+      <classpath refid="varnatraffic.module.production.classpath"/>
+      <src refid="varnatraffic.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.varnatraffic"/>
+    </javac2>
+    
+    <copy todir="${varnatraffic.output.dir}">
+      <fileset dir="${module.varnatraffic.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.varnatraffic.basedir}/gen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.varnatraffic.tests" depends="register.custom.compilers,compile.module.varnatraffic.production" description="compile module VarnaTraffic; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.varnatraffic" description="cleanup module">
+    <delete dir="${varnatraffic.output.dir}"/>
+    <delete dir="${varnatraffic.testoutput.dir}"/>
+  </target>
+</project>

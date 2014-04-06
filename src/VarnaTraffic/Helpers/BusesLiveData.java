@@ -9,4 +9,5 @@ import java.util.HashMap;
 public class BusesLiveData {
     public ArrayList<LiveDataModel> LiveData;
     public HashMap<String,ArrayList<ScheduleModel>> ScheduleData;
+    public Boolean IsInternetConnection;
 }

@@ -1,0 +1,40 @@
+com.varnatraffic.VarnaTraffic.BusesTableActivity
+com.varnatraffic.VarnaTraffic.BusesTableActivity: BusesTableActivity()
+com.varnatraffic.VarnaTraffic.BusesTableActivity: void onClick(android.view.View)
+com.varnatraffic.VarnaTraffic.MainActivity
+com.varnatraffic.VarnaTraffic.MainActivity: MainActivity()
+com.varnatraffic.VarnaTraffic.R$drawable: int ic_launcher
+com.varnatraffic.VarnaTraffic.R$id: int autoCompleteText
+com.varnatraffic.VarnaTraffic.R$id: int autocomplete
+com.varnatraffic.VarnaTraffic.R$id: int busesHeaderScheduleTable
+com.varnatraffic.VarnaTraffic.R$id: int busesHeaderTable
+com.varnatraffic.VarnaTraffic.R$id: int busesScheduleTable
+com.varnatraffic.VarnaTraffic.R$id: int busesTable
+com.varnatraffic.VarnaTraffic.R$id: int lvMostRecent
+com.varnatraffic.VarnaTraffic.R$id: int refreshButton
+com.varnatraffic.VarnaTraffic.R$id: int scrollViewBusSchedule
+com.varnatraffic.VarnaTraffic.R$id: int scrollViewBusTable
+com.varnatraffic.VarnaTraffic.R$id: int selectBusStopButton
+com.varnatraffic.VarnaTraffic.R$id: int tableHeaderArrive
+com.varnatraffic.VarnaTraffic.R$id: int tableHeaderDelay
+com.varnatraffic.VarnaTraffic.R$id: int tableHeaderDistance
+com.varnatraffic.VarnaTraffic.R$id: int tableHeaderLeft
+com.varnatraffic.VarnaTraffic.R$id: int tableHeaderNumber
+com.varnatraffic.VarnaTraffic.R$id: int tableScheduleHeaderNumber
+com.varnatraffic.VarnaTraffic.R$id: int tableScheduleHeaderTime
+com.varnatraffic.VarnaTraffic.R$layout: int bus_schedule_table
+com.varnatraffic.VarnaTraffic.R$layout: int list_item
+com.varnatraffic.VarnaTraffic.R$layout: int main
+com.varnatraffic.VarnaTraffic.R$string: int app_name
+com.varnatraffic.VarnaTraffic.R$string: int mainActivityLast5Label
+com.varnatraffic.VarnaTraffic.R$string: int noInternetConnectionMessage
+com.varnatraffic.VarnaTraffic.R$string: int refreshButton
+com.varnatraffic.VarnaTraffic.R$string: int selectBusStopButton
+com.varnatraffic.VarnaTraffic.R$string: int tableHeaderArrive
+com.varnatraffic.VarnaTraffic.R$string: int tableHeaderDelay
+com.varnatraffic.VarnaTraffic.R$string: int tableHeaderDistance
+com.varnatraffic.VarnaTraffic.R$string: int tableHeaderEmptyString
+com.varnatraffic.VarnaTraffic.R$string: int tableHeaderLeft
+com.varnatraffic.VarnaTraffic.R$string: int tableHeaderNumber
+com.varnatraffic.VarnaTraffic.R$string: int tableScheduleHeader
+com.varnatraffic.VarnaTraffic.R$string: int tableScheduleHeaderNumber

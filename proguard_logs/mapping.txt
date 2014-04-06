@@ -1,0 +1,83 @@
+VarnaTraffic.Helpers.AutoCompleteListItem -> a.a.a:
+    java.lang.Integer Id -> a
+    java.lang.String Text -> b
+    java.lang.String getText() -> a
+    java.lang.Integer getId() -> b
+    java.lang.String toString() -> toString
+    java.lang.String toJSON() -> c
+    void serializeJSON(java.lang.String) -> a
+VarnaTraffic.Helpers.BusesLiveData -> a.a.b:
+    java.util.ArrayList LiveData -> a
+    java.util.HashMap ScheduleData -> b
+VarnaTraffic.Helpers.LiveDataModel -> a.a.c:
+    java.lang.String ArriveIn -> a
+    java.lang.String ArriveTime -> b
+    java.lang.String Delay -> c
+    java.lang.Integer Device -> d
+    java.lang.Integer Direction -> e
+    java.lang.String DistanceLeft -> f
+    java.lang.String Line -> g
+    android.location.Location Position -> h
+    java.lang.Integer State -> i
+VarnaTraffic.Helpers.ScheduleModel -> a.a.d:
+    java.lang.String DestStationTime -> a
+    java.lang.String Device -> b
+    java.lang.String Text -> c
+com.varnatraffic.VarnaTraffic.BusStopsAutoCompleteAdapter -> com.varnatraffic.VarnaTraffic.a:
+    java.util.ArrayList resultList -> a
+    int viewResourceId -> b
+    android.content.Context resourceContext -> c
+    android.view.LayoutInflater contexInflater -> d
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    int getCount() -> getCount
+    VarnaTraffic.Helpers.AutoCompleteListItem getItem(int) -> a
+    android.widget.Filter getFilter() -> getFilter
+    java.util.ArrayList autocomplete(java.lang.String) -> a
+    java.lang.Object getItem(int) -> getItem
+    java.util.ArrayList access$000(com.varnatraffic.VarnaTraffic.BusStopsAutoCompleteAdapter) -> a
+    java.util.ArrayList access$100(com.varnatraffic.VarnaTraffic.BusStopsAutoCompleteAdapter,java.lang.String) -> a
+com.varnatraffic.VarnaTraffic.BusStopsAutoCompleteAdapter$1 -> com.varnatraffic.VarnaTraffic.b:
+    com.varnatraffic.VarnaTraffic.BusStopsAutoCompleteAdapter this$0 -> a
+    android.widget.Filter$FilterResults performFiltering(java.lang.CharSequence) -> performFiltering
+    void publishResults(java.lang.CharSequence,android.widget.Filter$FilterResults) -> publishResults
+com.varnatraffic.VarnaTraffic.BusesTableActivity -> com.varnatraffic.VarnaTraffic.BusesTableActivity:
+    VarnaTraffic.Helpers.AutoCompleteListItem listItem -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onClick(android.view.View) -> onClick
+    void callAsynchronousTask(android.content.Context,android.view.View,java.lang.Integer) -> a
+com.varnatraffic.VarnaTraffic.BusesTableActivity$1 -> com.varnatraffic.VarnaTraffic.c:
+    android.os.Handler val$handler -> a
+    android.content.Context val$context -> b
+    android.view.View val$rootView -> c
+    java.lang.Integer val$param -> d
+    com.varnatraffic.VarnaTraffic.BusesTableActivity this$0 -> e
+    void run() -> run
+com.varnatraffic.VarnaTraffic.BusesTableActivity$1$1 -> com.varnatraffic.VarnaTraffic.d:
+    com.varnatraffic.VarnaTraffic.BusesTableActivity$1 this$1 -> a
+    void run() -> run
+com.varnatraffic.VarnaTraffic.ExecuteBusesHttpRequest -> com.varnatraffic.VarnaTraffic.e:
+    android.content.Context context -> a
+    android.view.View rootView -> b
+    VarnaTraffic.Helpers.BusesLiveData doInBackground(java.lang.Integer[]) -> a
+    void onPostExecute(VarnaTraffic.Helpers.BusesLiveData) -> a
+    java.lang.Integer DeleteTableChildRows(android.widget.TableLayout,int) -> a
+    java.lang.Boolean isInternetConnectionAvailable() -> a
+    void onPreExecute() -> onPreExecute
+    void onProgressUpdate(java.lang.Void[]) -> a
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.varnatraffic.VarnaTraffic.MainActivity -> com.varnatraffic.VarnaTraffic.MainActivity:
+    android.widget.ListView lvMostRecent -> a
+    VarnaTraffic.Helpers.AutoCompleteListItem listItem -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    void SaveMostRecentBusStop(VarnaTraffic.Helpers.AutoCompleteListItem) -> a
+    void access$000(com.varnatraffic.VarnaTraffic.MainActivity,VarnaTraffic.Helpers.AutoCompleteListItem) -> a
+com.varnatraffic.VarnaTraffic.MainActivity$1 -> com.varnatraffic.VarnaTraffic.f:
+    com.varnatraffic.VarnaTraffic.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.varnatraffic.VarnaTraffic.MainActivity$2 -> com.varnatraffic.VarnaTraffic.g:
+    android.content.Context val$ctx -> a
+    com.varnatraffic.VarnaTraffic.MainActivity this$0 -> b
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
