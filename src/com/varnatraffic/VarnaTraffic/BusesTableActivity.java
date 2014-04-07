@@ -52,14 +52,16 @@ public class BusesTableActivity extends Activity implements View.OnClickListener
         final Context context = cntx;
         final View rootView = rtView;
         final Integer param = prm;
+
+
         TimerTask doAsynchronousTask = new TimerTask() {
             @Override
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
                         try {
-                            ExecuteBusesHttpRequest performBackgroundTask = new ExecuteBusesHttpRequest(context,rootView);
-                            // PerformBackgroundTask this class is the class that extends AsynchTask
+                             ExecuteBusesHttpRequest performBackgroundTask = new ExecuteBusesHttpRequest(context,rootView);
+                           //  PerformBackgroundTask this class is the class that extends AsynchTask
                             performBackgroundTask.execute(param);
                         } catch (Exception e) {
                             // TODO Auto-generated catch block

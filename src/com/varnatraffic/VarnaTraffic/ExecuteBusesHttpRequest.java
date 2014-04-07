@@ -41,7 +41,8 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
     private Context context;
     private View rootView;
-
+    private Boolean errorOnServerConnecting = false;
+    private Boolean errorOnInternetConnection = false;
     public ExecuteBusesHttpRequest() {
     }
 
@@ -80,15 +81,15 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         } catch (MalformedURLException e) {
             Log.e(LOG_TAG, "Error processing Places API URL", e);
             e.printStackTrace();
-            return resultData;
+
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error connecting to Places API", e);
             e.printStackTrace();
-            return resultData;
+
         } catch (Exception e) {
             Log.e(LOG_TAG, "Error executing", e);
             e.printStackTrace();
-            return resultData;
+
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -132,7 +133,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 } catch (JSONException e) {
                     Log.e(LOG_TAG, "Error executing", e);
                     e.printStackTrace();
-                    return resultData;
+
                     // Something went wrong!
                 }
             }
@@ -147,16 +148,16 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Cannot process JSON results", e);
-            resultData = new BusesLiveData();
-            resultData.IsInternetConnection = false;
+            e.printStackTrace();
         }
 
         }
         else
         {
             Log.d(LOG_TAG,"Toast no internet connection");
+            resultData = new BusesLiveData();
+            resultData.IsInternetConnection = false;
         }
-        Log.d(LOG_TAG,"Returning resultData");
 
     } catch (Exception e) {
 
@@ -169,6 +170,9 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
     @Override
     protected void onPostExecute(BusesLiveData result) {
         if(result != null && result.IsInternetConnection) {
+            errorOnInternetConnection = false;
+            errorOnServerConnecting = false;
+
             Log.d(LOG_TAG, "Async PostExecute");
             Resources res = context.getResources();
             TextView arriveTimeTextView;
@@ -357,34 +361,38 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
         }
         else
         {
-            AlertDialog alertDialog = new AlertDialog.Builder(context).create()
+
+            AlertDialog alertDialog = new AlertDialog.Builder(context).create();
             if(result == null) {
 
-
+            if(errorOnServerConnecting == false) {
                 alertDialog.setTitle("Съобщение");
-                alertDialog.setMessage("Грешка при достъпа на към сървъра.");
+                alertDialog.setMessage("Грешка при достъпа към сървъра.");
                 alertDialog.setCancelable(false);
                 alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
+                        errorOnServerConnecting = true;
                     }
                 });
 
                 alertDialog.show();
             }
+
+            }
             else
             {
+                if(errorOnInternetConnection == false) {
+                    alertDialog.setTitle("Съобщение");
+                    alertDialog.setMessage("Няма интернет връзка, проверете дали сте свързани към интернет.");
+                    alertDialog.setCancelable(false);
+                    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            errorOnInternetConnection = true;
+                        }
+                    });
 
-                alertDialog.setTitle("Съобщение");
-                alertDialog.setMessage("Няма интернет връзка, проверете дали сте свързани към интернет.");
-                alertDialog.setCancelable(false);
-                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-                alertDialog.show();
+                    alertDialog.show();
+                }
 
 
             }
