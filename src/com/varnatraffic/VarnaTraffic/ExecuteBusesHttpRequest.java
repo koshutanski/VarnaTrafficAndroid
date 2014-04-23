@@ -14,6 +14,7 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.text.AndroidCharacter;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -365,7 +366,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
             AlertDialog alertDialog = new AlertDialog.Builder(context).create();
             if(result == null) {
 
-            if(errorOnServerConnecting == false) {
+                if(errorOnServerConnecting == false) {
                 alertDialog.setTitle("Съобщение");
                 alertDialog.setMessage("Грешка при достъпа към сървъра.");
                 alertDialog.setCancelable(false);
