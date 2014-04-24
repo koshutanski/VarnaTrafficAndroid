@@ -16,6 +16,8 @@
     <string name="tableScheduleHeaderNumber">номер</string>
 
 
-    <string name="noInternetConnectionMessage">Няма интернет връзка</string>
+    <string name="noInternetConnectionMessage">Няма интернет връзка, проверете дали сте свързани към интернет</string>
+    <string name="noServerAccessMessage">Грешка при достъпа към сървъра</string>
+    <string name="MessageHeader">Съобщение</string>
 
 </resources>

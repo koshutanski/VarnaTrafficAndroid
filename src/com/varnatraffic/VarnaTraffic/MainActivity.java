@@ -48,6 +48,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         Button selectBusStopButton = (Button) findViewById(R.id.selectBusStopButton);
         autoCompView.setAdapter(new BusStopsAutoCompleteAdapter(this, R.layout.list_item));
         autoCompView.setOnItemClickListener(this);
+
         selectBusStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
