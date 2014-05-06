@@ -45,9 +45,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         lvMostRecent = (ListView) findViewById(R.id.lvMostRecent);
         AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
         autoCompView.setThreshold(2);
-        Button selectBusStopButton = (Button) findViewById(R.id.selectBusStopButton);
-        autoCompView.setAdapter(new BusStopsAutoCompleteAdapter(this, R.layout.list_item));
         autoCompView.setOnItemClickListener(this);
+        Button selectBusStopButton = (Button) findViewById(R.id.selectBusStopButton);
+        if(autoCompView.getAdapter() == null) {
+            autoCompView.setAdapter(new BusStopsAutoCompleteAdapter(this, R.layout.list_item));
+        }
 
         selectBusStopButton.setOnClickListener(new View.OnClickListener() {
             @Override

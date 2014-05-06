@@ -1,6 +1,8 @@
 package com.varnatraffic.VarnaTraffic;
 
 import VarnaTraffic.Helpers.AutoCompleteListItem;
+import VarnaTraffic.Helpers.MethodHelpers;
+
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListIt
    private int viewResourceId;
    private Context resourceContext;
    private LayoutInflater contexInflater;
+    private Boolean isInternetConnectionAvailable = true;
     public BusStopsAutoCompleteAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
         viewResourceId = textViewResourceId;
@@ -34,6 +37,7 @@ public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListIt
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.e(LOG_TAG, "getView");
         View view = convertView;
         if (view == null) {
             view = contexInflater.inflate(viewResourceId, null);
@@ -60,111 +64,164 @@ public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListIt
     }
 
     @Override
-    public int getCount() {
-        return resultList.size();
+    public int getCount() {    Log.e(LOG_TAG, "getCount");
+        try {
+            return resultList.size();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 
     @Override
-    public AutoCompleteListItem getItem(int index) {
-        return resultList.get(index);
-
+    public AutoCompleteListItem getItem(int index) {    Log.e(LOG_TAG, "getItem");
+        if(resultList.size() > 0) {
+            return resultList.get(index);
+        }
+        else {
+        return new AutoCompleteListItem();
+        }
     }
 
     @Override
     public Filter getFilter() {
-        Filter filter = new Filter() {
+        Log.e(LOG_TAG, "getFilter");
 
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                FilterResults filterResults = new FilterResults();
-                synchronized (resultList) {
-                    if (constraint != null) {
-                        // Retrieve the autocomplete results.
-                        resultList.clear();
-                        resultList.addAll(autocomplete(constraint.toString()));
+        try {
+            Filter filter = new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint) {
+                    Log.e(LOG_TAG, "performFiltering");
+                    FilterResults filterResults = new FilterResults();
+                    try {
 
-                        // Assign the data to the FilterResults
-                        filterResults.values = resultList;
-                        filterResults.count = resultList.size();
+                        synchronized (resultList) {
+                            if (constraint != null) {
+                                // Retrieve the autocomplete results.
+                                resultList.clear();
+
+                                ArrayList<AutoCompleteListItem> autocompleteHttpResult = autocomplete(constraint.toString());
+                                if (autocompleteHttpResult != null) {
+                                    resultList.addAll(autocompleteHttpResult);
+                                }
+
+                                // Assign the data to the FilterResults
+                                filterResults.values = resultList;
+                                filterResults.count = resultList.size();
+                            }
+                            return filterResults;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return filterResults;
                     }
-                    return filterResults;
                 }
-            }
 
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                if (results != null && results.count > 0) {
-                       // resultList.clear();
-                       // resultList.addAll((ArrayList<AutoCompleteListItem>) results.values);
-                        notifyDataSetChanged();
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results) {
+                    Log.e(LOG_TAG, "publishREsults");
+                    try {
+                        if (results != null && results.count > 0) {
+                            // resultList.clear();
+                            // resultList.addAll((ArrayList<AutoCompleteListItem>) results.values);
+                            notifyDataSetChanged();
+                        } else {
+                            if (!isInternetConnectionAvailable) {
+                                Toast.makeText(resourceContext, R.string.noInternetConnectionMessage, Toast.LENGTH_SHORT).show();
+                            }
+
+                            notifyDataSetInvalidated();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-                else {
-                    notifyDataSetInvalidated();
-                }
-            }};
-        return filter;
+
+            };
+            return filter;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private static final String LOG_TAG = "VarnaTrafficApp";
 
-    private static final String PLACES_API_BASE = "http://varnatraffic.com/Ajax/FindStation";
+    private static final String VT_API_BASE = "http://varnatraffic.com/Ajax/FindStation";
 
 
-    private ArrayList<AutoCompleteListItem> autocomplete(String input) {
-        ArrayList<AutoCompleteListItem> resultList = null;
-
-        HttpURLConnection conn = null;
-        StringBuilder jsonResults = new StringBuilder();
+    private ArrayList<AutoCompleteListItem> autocomplete(String input) {Log.e(LOG_TAG, "autocomplete");
         try {
-            StringBuilder sb = new StringBuilder(PLACES_API_BASE);
-            sb.append("?query=").append(URLEncoder.encode(input, "utf8"));
+            ArrayList<AutoCompleteListItem> resultList = null;
+            if (MethodHelpers.isInternetConnectionAvailable(resourceContext)) {
+                isInternetConnectionAvailable = true;
+                HttpURLConnection conn = null;
+                StringBuilder jsonResults = new StringBuilder();
+                try {
+                    StringBuilder sb = new StringBuilder(VT_API_BASE);
+                    sb.append("?query=").append(URLEncoder.encode(input, "utf8"));
 
-            URL url = new URL(sb.toString());
-            conn = (HttpURLConnection) url.openConnection();
-            InputStreamReader in = new InputStreamReader(conn.getInputStream());
+                    URL url = new URL(sb.toString());
+                    conn = (HttpURLConnection) url.openConnection();
+                    InputStreamReader in = new InputStreamReader(conn.getInputStream());
 
-            // Load the results into a StringBuilder
-            int read;
-            char[] buff = new char[1024];
-            while ((read = in.read(buff)) != -1) {
-                jsonResults.append(buff, 0, read);
-            }
-        } catch (MalformedURLException e) {
-            Log.e(LOG_TAG, "Error processing Places API URL", e);
-            return resultList;
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "Error connecting to Places API", e);
-            return resultList;
-        } finally {
-            if (conn != null) {
-                conn.disconnect();
-            }
-        }
+                    // Load the results into a StringBuilder
+                    int read;
+                    char[] buff = new char[1024];
+                    while ((read = in.read(buff)) != -1) {
+                        jsonResults.append(buff, 0, read);
+                    }
+                } catch (MalformedURLException e) {
+                    Log.e(LOG_TAG, "Error processing URL", e);
+                    return resultList;
+                } catch (IOException e) {
+                    Log.e(LOG_TAG, "Error connecting to API", e);
+                    return resultList;
+                } finally {
+                    if (conn != null) {
+                        conn.disconnect();
+                    }
+                }
 
-        try {
-            // Create a JSON object hierarchy from the results
-            JSONArray jArray = new JSONArray(jsonResults.toString());
+                try {
+                    // Create a JSON object hierarchy from the results
+                    JSONArray jArray = new JSONArray(jsonResults.toString());
 
 //            JSONObject jsonObj = new JSONObject(jsonResults.toString());
 //            JSONArray predsJsonArray = jsonObj.getJSONArray("predictions");
 
-            // Extract the Place descriptions from the results
-            resultList = new ArrayList<AutoCompleteListItem>();
-            String atZeroElementId =   jArray.getJSONObject(0).getString("id");
-            if(!atZeroElementId.equals("-1"))
-            {
+                    // Extract the Place descriptions from the results
+                    resultList = new ArrayList<AutoCompleteListItem>();
+                    String atZeroElementId = jArray.getJSONObject(0).getString("id");
+                    if (!atZeroElementId.equals("-1")) {
 
-            for (int i = 0; i < jArray.length(); i++) {
+                        for (int i = 0; i < jArray.length(); i++) {
 
-                resultList.add(new AutoCompleteListItem(jArray.getJSONObject(i).getInt("id"), jArray.getJSONObject(i).getString("text"))) ;
+                            resultList.add(new AutoCompleteListItem(jArray.getJSONObject(i).getInt("id"), jArray.getJSONObject(i).getString("text")));
+                        }
+
+                    }
+                } catch (JSONException e) {
+                    Log.e(LOG_TAG, "Cannot process JSON results", e);
+                }
+            } else {
+                isInternetConnectionAvailable = false;
             }
 
-            }
-        } catch (JSONException e) {
-            Log.e(LOG_TAG, "Cannot process JSON results", e);
+            Log.e(LOG_TAG, "autocomplete size: 0" + resultList.size());
+
+            return resultList;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
         }
 
-        return resultList;
     }
 }
