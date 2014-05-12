@@ -56,7 +56,7 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
     private static final String LOG_TAG = "VarnaTrafficApp";
     private static final String PLACES_API_BASE = "http://varnatraffic.com/Ajax/FindStationDevices";
-
+    int TIMEOUT_VALUE = 1000;
     @Override
     protected BusesLiveData doInBackground(Integer... params) {
         Log.d(LOG_TAG, "Starting Async Task");
@@ -72,6 +72,8 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
 
                     URL url = new URL(sb.toString());
                     conn = (HttpURLConnection) url.openConnection();
+                    conn.setConnectTimeout(TIMEOUT_VALUE);
+                    conn.setReadTimeout(TIMEOUT_VALUE);
                     InputStreamReader in = new InputStreamReader(conn.getInputStream());
 
                     // Load the results into a StringBuilder

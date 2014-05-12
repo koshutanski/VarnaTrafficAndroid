@@ -16,15 +16,14 @@ import java.util.TimerTask;
 /**
  * Date: 9/13/13
  */
-public class BusesTableActivity extends Activity implements View.OnClickListener {
+public class BusesTableActivity extends Activity {
     AutoCompleteListItem listItem;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bus_schedule_table);
 
-        Button refreshButton = (Button) this.findViewById(R.id.refreshButton);
-        refreshButton.setOnClickListener(this);
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -38,13 +37,13 @@ public class BusesTableActivity extends Activity implements View.OnClickListener
 
     }
 
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(this, listItem.getText(),Toast.LENGTH_SHORT).show();
-       View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
-       new ExecuteBusesHttpRequest(this,rootView).execute(listItem.getId());
-        setTitle(listItem.getText());
-    }
+//    @Override
+//    public void onClick(View v) {
+//        Toast.makeText(this, listItem.getText(),Toast.LENGTH_SHORT).show();
+//       View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+//       new ExecuteBusesHttpRequest(this,rootView).execute(listItem.getId());
+//        setTitle(listItem.getText());
+//    }
 
     public void callAsynchronousTask(Context cntx,View rtView, Integer prm) {
         final Handler handler = new Handler();

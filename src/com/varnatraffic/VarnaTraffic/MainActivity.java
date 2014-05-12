@@ -1,6 +1,7 @@
 package com.varnatraffic.VarnaTraffic;
 
 import VarnaTraffic.Helpers.AutoCompleteListItem;
+import VarnaTraffic.Helpers.AutoCompleteTextViewDelayed;
 import VarnaTraffic.Helpers.ConstantHelper;
 
 import android.app.Activity;
@@ -9,6 +10,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,7 +46,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 //           editor.clear().commit();
 
         lvMostRecent = (ListView) findViewById(R.id.lvMostRecent);
-        AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
+        AutoCompleteTextViewDelayed autoCompView = (AutoCompleteTextViewDelayed) findViewById(R.id.autocomplete);
         autoCompView.setThreshold(2);
         autoCompView.setOnItemClickListener(this);
         Button selectBusStopButton = (Button) findViewById(R.id.selectBusStopButton);
@@ -110,7 +113,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 //  intent.putExtra("listItem", (Serializable)listItem);
               //  SaveMostRecentBusStop(recentListItem);
                 // startActivity(intent);
-                AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
+                AutoCompleteTextViewDelayed autoCompView = (AutoCompleteTextViewDelayed) findViewById(R.id.autocomplete);
                 int currentapiVersion = android.os.Build.VERSION.SDK_INT;
 //                if (currentapiVersion >= Build.VERSION_CODES.JELLY_BEAN_MR1){
 //                    autoCompView.setText(recentListItem.getText(),false);
@@ -179,6 +182,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             Log.e("Exception", "Error trying to save the chosen bus stop", e);
         }
     }
+
+
+
+
+
 }
 
 

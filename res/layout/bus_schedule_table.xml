@@ -127,10 +127,4 @@
     </ScrollView>
 
 
-    <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/refreshButton"
-            android:id="@+id/refreshButton" android:layout_gravity="center"/>
-
     </LinearLayout>
