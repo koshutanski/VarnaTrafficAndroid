@@ -199,14 +199,16 @@ public class BusStopsAutoCompleteAdapter extends ArrayAdapter<AutoCompleteListIt
 
                     // Extract the Place descriptions from the results
                     resultList = new ArrayList<AutoCompleteListItem>();
-                    String atZeroElementId = jArray.getJSONObject(0).getString("id");
-                    if (!atZeroElementId.equals("-1")) {
+                    if(jArray.length() > 0) {
+                        String atZeroElementId = jArray.getJSONObject(0).getString("id");
+                        if (!atZeroElementId.equals("-1")) {
 
-                        for (int i = 0; i < jArray.length(); i++) {
+                            for (int i = 0; i < jArray.length(); i++) {
 
-                            resultList.add(new AutoCompleteListItem(jArray.getJSONObject(i).getInt("id"), jArray.getJSONObject(i).getString("text")));
+                                resultList.add(new AutoCompleteListItem(jArray.getJSONObject(i).getInt("id"), jArray.getJSONObject(i).getString("text")));
+                            }
+
                         }
-
                     }
                 } catch (JSONException e) {
                     Log.e(LOG_TAG, "Cannot process JSON results", e);

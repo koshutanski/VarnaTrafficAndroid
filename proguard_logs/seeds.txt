@@ -1,6 +1,10 @@
+VarnaTraffic.Helpers.AutoCompleteTextViewDelayed
+VarnaTraffic.Helpers.AutoCompleteTextViewDelayed: AutoCompleteTextViewDelayed(android.content.Context)
+VarnaTraffic.Helpers.AutoCompleteTextViewDelayed: AutoCompleteTextViewDelayed(android.content.Context,android.util.AttributeSet)
+VarnaTraffic.Helpers.AutoCompleteTextViewDelayed: int getDelay()
+VarnaTraffic.Helpers.AutoCompleteTextViewDelayed: void setDelay(int)
 com.varnatraffic.VarnaTraffic.BusesTableActivity
 com.varnatraffic.VarnaTraffic.BusesTableActivity: BusesTableActivity()
-com.varnatraffic.VarnaTraffic.BusesTableActivity: void onClick(android.view.View)
 com.varnatraffic.VarnaTraffic.MainActivity
 com.varnatraffic.VarnaTraffic.MainActivity: MainActivity()
 com.varnatraffic.VarnaTraffic.R$drawable: int ic_launcher
@@ -11,7 +15,6 @@ com.varnatraffic.VarnaTraffic.R$id: int busesHeaderTable
 com.varnatraffic.VarnaTraffic.R$id: int busesScheduleTable
 com.varnatraffic.VarnaTraffic.R$id: int busesTable
 com.varnatraffic.VarnaTraffic.R$id: int lvMostRecent
-com.varnatraffic.VarnaTraffic.R$id: int refreshButton
 com.varnatraffic.VarnaTraffic.R$id: int scrollViewBusSchedule
 com.varnatraffic.VarnaTraffic.R$id: int scrollViewBusTable
 com.varnatraffic.VarnaTraffic.R$id: int selectBusStopButton
@@ -25,9 +28,11 @@ com.varnatraffic.VarnaTraffic.R$id: int tableScheduleHeaderTime
 com.varnatraffic.VarnaTraffic.R$layout: int bus_schedule_table
 com.varnatraffic.VarnaTraffic.R$layout: int list_item
 com.varnatraffic.VarnaTraffic.R$layout: int main
+com.varnatraffic.VarnaTraffic.R$string: int MessageHeader
 com.varnatraffic.VarnaTraffic.R$string: int app_name
 com.varnatraffic.VarnaTraffic.R$string: int mainActivityLast5Label
 com.varnatraffic.VarnaTraffic.R$string: int noInternetConnectionMessage
+com.varnatraffic.VarnaTraffic.R$string: int noServerAccessMessage
 com.varnatraffic.VarnaTraffic.R$string: int refreshButton
 com.varnatraffic.VarnaTraffic.R$string: int selectBusStopButton
 com.varnatraffic.VarnaTraffic.R$string: int tableHeaderArrive
