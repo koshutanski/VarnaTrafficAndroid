@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
-                android:layout_weight="0.1"
+                android:layout_weight="0.12"
                 android:text="@string/tableHeaderDelay"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             <TextView
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="0.1"
+                    android:layout_weight="0.08"
                     android:text="@string/tableHeaderDistance"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 

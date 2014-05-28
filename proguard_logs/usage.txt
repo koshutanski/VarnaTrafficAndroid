@@ -4,7 +4,7 @@ VarnaTraffic.Helpers.ConstantHelper:
     public static final java.lang.String SharedPreferenceRecentBusStops
     6:6:public ConstantHelper()
 VarnaTraffic.Helpers.LiveDataModel:
-    24:34:public LiveDataModel(java.lang.String,java.lang.String,java.lang.String,java.lang.Integer,java.lang.Integer,java.lang.String,java.lang.String,android.location.Location,java.lang.Integer)
+    24:34:public LiveDataModel(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.Integer,java.lang.String,java.lang.String,android.location.Location,java.lang.Integer)
 VarnaTraffic.Helpers.MethodHelpers:
     9:9:public MethodHelpers()
 com.varnatraffic.VarnaTraffic.BuildConfig

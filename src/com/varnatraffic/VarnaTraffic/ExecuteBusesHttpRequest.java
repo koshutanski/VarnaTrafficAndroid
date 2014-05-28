@@ -103,55 +103,59 @@ public class ExecuteBusesHttpRequest extends AsyncTask<Integer, Void, BusesLiveD
                 try {
                     // Create a JSON object hierarchy from the results
                     // JSONArray jArray = new JSONArray(jsonResults.toString());
-                    JSONObject jsonObj = new JSONObject(jsonResults.toString());
-                    JSONArray liveData = jsonObj.getJSONArray("liveData");
-                    JSONObject schedule = jsonObj.getJSONObject("schedule");
-
                     ArrayList<LiveDataModel> liveDataModelList = new ArrayList<LiveDataModel>();
-                    for (int i = 0; i < liveData.length(); i++) {
-                        LiveDataModel liveModel = new LiveDataModel();
-
-                        liveModel.ArriveIn = liveData.getJSONObject(i).has("arriveIn") ? liveData.getJSONObject(i).getString("arriveIn") : null;
-                        liveModel.ArriveTime = liveData.getJSONObject(i).has("arriveTime") ? liveData.getJSONObject(i).getString("arriveTime") : null;
-                        liveModel.Delay = liveData.getJSONObject(i).has("delay") ? liveData.getJSONObject(i).getString("delay") : null;
-                        liveModel.Device = liveData.getJSONObject(i).has("device") ? liveData.getJSONObject(i).getInt("device") : null;
-                        liveModel.Direction = liveData.getJSONObject(i).has("direction") ? liveData.getJSONObject(i).getInt("direction") : null;
-                        liveModel.DistanceLeft = liveData.getJSONObject(i).has("distanceLeft") ? liveData.getJSONObject(i).getString("distanceLeft") : null;
-                        liveModel.Line = liveData.getJSONObject(i).has("line") ? liveData.getJSONObject(i).getString("line") : null;
-                        liveModel.Position = null;
-                        liveModel.State = liveData.getJSONObject(i).has("state") ? liveData.getJSONObject(i).getInt("state") : null;
-
-                        liveDataModelList.add(liveModel);
-                    }
                     HashMap<String, ArrayList<ScheduleModel>> busesSchedule = new HashMap<String, ArrayList<ScheduleModel>>();
-                    Iterator<String> iter = schedule.keys();
-                    while (iter.hasNext()) {
-                        String key = iter.next();
-                        try {
-                            ArrayList<ScheduleModel> scheduleModuleList = new ArrayList<ScheduleModel>();
-                            JSONArray scheduleForSingleBus = schedule.getJSONArray(key);
-                            for (int i = 0; i < scheduleForSingleBus.length(); i++) {
-                                scheduleModuleList.add(new ScheduleModel(scheduleForSingleBus.getJSONObject(i).getString("destStationTime"), scheduleForSingleBus.getJSONObject(i).getString("device"), scheduleForSingleBus.getJSONObject(i).getString("text")));
+
+                    if (jsonResults.length() > 0) {
+                        JSONObject jsonObj = new JSONObject(jsonResults.toString());
+                        JSONArray liveData = jsonObj.getJSONArray("liveData");
+                        JSONObject schedule = jsonObj.getJSONObject("schedule");
+
+
+                        for (int i = 0; i < liveData.length(); i++) {
+                            LiveDataModel liveModel = new LiveDataModel();
+
+                            liveModel.ArriveIn = liveData.getJSONObject(i).has("arriveIn") ? liveData.getJSONObject(i).getString("arriveIn") : null;
+                            liveModel.ArriveTime = liveData.getJSONObject(i).has("arriveTime") ? liveData.getJSONObject(i).getString("arriveTime") : null;
+                            liveModel.Delay = liveData.getJSONObject(i).has("delay") ? liveData.getJSONObject(i).getString("delay") : null;
+                            liveModel.Device = liveData.getJSONObject(i).has("device") ? liveData.getJSONObject(i).getString("device") : null;
+                            liveModel.Direction = liveData.getJSONObject(i).has("direction") ? liveData.getJSONObject(i).getInt("direction") : null;
+                            liveModel.DistanceLeft = liveData.getJSONObject(i).has("distanceLeft") ? liveData.getJSONObject(i).getString("distanceLeft") : null;
+                            liveModel.Line = liveData.getJSONObject(i).has("line") ? liveData.getJSONObject(i).getString("line") : null;
+                            liveModel.Position = null;
+                            liveModel.State = liveData.getJSONObject(i).has("state") ? liveData.getJSONObject(i).getInt("state") : null;
+
+                            liveDataModelList.add(liveModel);
+                        }
+
+                        Iterator<String> iter = schedule.keys();
+                        while (iter.hasNext()) {
+                            String key = iter.next();
+                            try {
+                                ArrayList<ScheduleModel> scheduleModuleList = new ArrayList<ScheduleModel>();
+                                JSONArray scheduleForSingleBus = schedule.getJSONArray(key);
+                                for (int i = 0; i < scheduleForSingleBus.length(); i++) {
+                                    scheduleModuleList.add(new ScheduleModel(scheduleForSingleBus.getJSONObject(i).getString("destStationTime"), scheduleForSingleBus.getJSONObject(i).getString("device"), scheduleForSingleBus.getJSONObject(i).getString("text")));
+                                }
+                                busesSchedule.put(key, scheduleModuleList);
+                            } catch (JSONException e) {
+                                Log.e(LOG_TAG, "Error executing", e);
+                                e.printStackTrace();
                             }
-                            busesSchedule.put(key, scheduleModuleList);
-                        } catch (JSONException e) {
-                            Log.e(LOG_TAG, "Error executing", e);
-                            e.printStackTrace();
                         }
                     }
+                        // Extract the Place descriptions from the results
+                        resultData = new BusesLiveData();
 
-                    // Extract the Place descriptions from the results
-                    resultData = new BusesLiveData();
+                        resultData.LiveData = liveDataModelList;
+                        resultData.ScheduleData = busesSchedule;
+                        resultData.IsInternetConnection = true;
+                        return resultData;
 
-                    resultData.LiveData = liveDataModelList;
-                    resultData.ScheduleData = busesSchedule;
-                    resultData.IsInternetConnection = true;
-                    return resultData;
-
-                } catch (JSONException e) {
-                    Log.e(LOG_TAG, "Cannot process JSON results", e);
-                    e.printStackTrace();
-                }
+                    }catch(JSONException e){
+                        Log.e(LOG_TAG, "Cannot process JSON results", e);
+                        e.printStackTrace();
+                    }
 
             } else {
                 Log.d(LOG_TAG, "Toast no internet connection");

@@ -9,7 +9,7 @@ public class LiveDataModel {
    public String  ArriveIn;
    public String ArriveTime;
    public String Delay;
-   public Integer Device;
+   public String Device;
    public Integer Direction;
    public String DistanceLeft;
    public String Line;
@@ -20,7 +20,7 @@ public class LiveDataModel {
     {  }
 
 
-    public LiveDataModel(String arriveIn, String arriveTime, String delay, Integer device, Integer  direction, String distanceLeft,String line, Location position, Integer state)
+    public LiveDataModel(String arriveIn, String arriveTime, String delay, String device, Integer  direction, String distanceLeft,String line, Location position, Integer state)
     {
       ArriveIn = arriveIn;
         ArriveTime = arriveTime;

@@ -31,7 +31,7 @@ VarnaTraffic.Helpers.LiveDataModel -> VarnaTraffic.Helpers.e:
     java.lang.String ArriveIn -> a
     java.lang.String ArriveTime -> b
     java.lang.String Delay -> c
-    java.lang.Integer Device -> d
+    java.lang.String Device -> d
     java.lang.Integer Direction -> e
     java.lang.String DistanceLeft -> f
     java.lang.String Line -> g

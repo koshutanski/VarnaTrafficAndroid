@@ -699,9 +699,9 @@ Fields (count = 9):
   + Field:        c Ljava/lang/String;
     Access flags: 0x1
       = public java.lang.String c
-  + Field:        d Ljava/lang/Integer;
+  + Field:        d Ljava/lang/String;
     Access flags: 0x1
-      = public java.lang.Integer d
+      = public java.lang.String d
   + Field:        e Ljava/lang/Integer;
     Access flags: 0x1
       = public java.lang.Integer e
@@ -1427,7 +1427,7 @@ Methods (count = 11):
     Access flags: 0x2
       = private java.util.ArrayList a(java.lang.String)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 380, locals = 11, stack = 6):
+    + Code attribute instructions (code length = 388, locals = 11, stack = 6):
       [0] ldc #8
         + String [VarnaTrafficApp]
       [2] ldc #9
@@ -1444,7 +1444,7 @@ Methods (count = 11):
         + Methodref [VarnaTraffic/Helpers/f.a (Landroid/content/Context;)Ljava/lang/Boolean;]
       [17] invokevirtual #69
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [20] ifeq +315 (target=335)
+      [20] ifeq +323 (target=343)
       [23] aload_0 v0
       [24] iconst_1
       [25] invokestatic #70
@@ -1589,100 +1589,104 @@ Methods (count = 11):
         + Methodref [java/util/ArrayList.<init> ()V]
       [238] astore_2 v2
       [239] aload v5
-      [241] iconst_0
-      [242] invokevirtual #89
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [245] ldc #16
-        + String [id]
-      [247] invokevirtual #92
-        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [250] astore v6
-      [252] aload v6
-      [254] ldc #3
-        + String [-1]
-      [256] invokevirtual #72
-        + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [259] ifne +58 (target=317)
-      [262] iconst_0
-      [263] istore v7
-      [265] iload v7
-      [267] aload v5
-      [269] invokevirtual #90
+      [241] invokevirtual #90
         + Methodref [org/json/JSONArray.length ()I]
-      [272] ificmpge +45 (target=317)
-      [275] aload_2 v2
-      [276] new #20
-        + Class [VarnaTraffic/Helpers/a]
-      [279] dup
-      [280] aload v5
-      [282] iload v7
-      [284] invokevirtual #89
+      [244] ifle +81 (target=325)
+      [247] aload v5
+      [249] iconst_0
+      [250] invokevirtual #89
         + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [287] ldc #16
+      [253] ldc #16
         + String [id]
-      [289] invokevirtual #91
-        + Methodref [org/json/JSONObject.getInt (Ljava/lang/String;)I]
-      [292] aload v5
-      [294] iload v7
-      [296] invokevirtual #89
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [299] ldc #18
-        + String [text]
-      [301] invokevirtual #92
+      [255] invokevirtual #92
         + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [304] invokespecial #54
+      [258] astore v6
+      [260] aload v6
+      [262] ldc #3
+        + String [-1]
+      [264] invokevirtual #72
+        + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+      [267] ifne +58 (target=325)
+      [270] iconst_0
+      [271] istore v7
+      [273] iload v7
+      [275] aload v5
+      [277] invokevirtual #90
+        + Methodref [org/json/JSONArray.length ()I]
+      [280] ificmpge +45 (target=325)
+      [283] aload_2 v2
+      [284] new #20
+        + Class [VarnaTraffic/Helpers/a]
+      [287] dup
+      [288] aload v5
+      [290] iload v7
+      [292] invokevirtual #89
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [295] ldc #16
+        + String [id]
+      [297] invokevirtual #91
+        + Methodref [org/json/JSONObject.getInt (Ljava/lang/String;)I]
+      [300] aload v5
+      [302] iload v7
+      [304] invokevirtual #89
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [307] ldc #18
+        + String [text]
+      [309] invokevirtual #92
+        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
+      [312] invokespecial #54
         + Methodref [VarnaTraffic/Helpers/a.<init> (ILjava/lang/String;)V]
-      [307] invokevirtual #85
+      [315] invokevirtual #85
         + Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
-      [310] pop
-      [311] iinc v7, 1
-      [314] goto -49 (target=265)
-      [317] goto +15 (target=332)
-      [320] astore v5
-      [322] ldc #8
+      [318] pop
+      [319] iinc v7, 1
+      [322] goto -49 (target=273)
+      [325] goto +15 (target=340)
+      [328] astore v5
+      [330] ldc #8
         + String [VarnaTrafficApp]
-      [324] ldc #5
+      [332] ldc #5
         + String [Cannot process JSON results]
-      [326] aload v5
-      [328] invokestatic #59
+      [334] aload v5
+      [336] invokestatic #59
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
-      [331] pop
-      [332] goto +11 (target=343)
-      [335] aload_0 v0
-      [336] iconst_0
-      [337] invokestatic #70
+      [339] pop
+      [340] goto +11 (target=351)
+      [343] aload_0 v0
+      [344] iconst_0
+      [345] invokestatic #70
         + Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [340] putfield #52
+      [348] putfield #52
         + Fieldref [com/varnatraffic/VarnaTraffic/a.e Ljava/lang/Boolean;]
-      [343] ldc #8
+      [351] ldc #8
         + String [VarnaTrafficApp]
-      [345] new #38
+      [353] new #38
         + Class [java/lang/StringBuilder]
-      [348] dup
-      [349] invokespecial #73
+      [356] dup
+      [357] invokespecial #73
         + Methodref [java/lang/StringBuilder.<init> ()V]
-      [352] ldc #10
+      [360] ldc #10
         + String [autocomplete size: 0]
-      [354] invokevirtual #76
+      [362] invokevirtual #76
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [357] aload_2 v2
-      [358] invokevirtual #87
+      [365] aload_2 v2
+      [366] invokevirtual #87
         + Methodref [java/util/ArrayList.size ()I]
-      [361] invokevirtual #75
+      [369] invokevirtual #75
         + Methodref [java/lang/StringBuilder.append (I)Ljava/lang/StringBuilder;]
-      [364] invokevirtual #78
+      [372] invokevirtual #78
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [367] invokestatic #58
+      [375] invokestatic #58
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
-      [370] pop
-      [371] aload_2 v2
-      [372] areturn
-      [373] astore_2 v2
-      [374] aload_2 v2
-      [375] invokevirtual #71
+      [378] pop
+      [379] aload_2 v2
+      [380] areturn
+      [381] astore_2 v2
+      [382] aload_2 v2
+      [383] invokevirtual #71
         + Methodref [java/lang/Exception.printStackTrace ()V]
-      [378] aconst_null
-      [379] areturn
+      [386] aconst_null
+      [387] areturn
       Code attribute exceptions (count = 10):
       - ExceptionInfo (42 -> 141: 152):
       + Class [java/net/MalformedURLException]
@@ -1692,13 +1696,13 @@ Methods (count = 11):
       - ExceptionInfo (152 -> 167: 204):
       - ExceptionInfo (178 -> 193: 204):
       - ExceptionInfo (204 -> 206: 204):
-      - ExceptionInfo (217 -> 317: 320):
+      - ExceptionInfo (217 -> 325: 328):
       + Class [org/json/JSONException]
-      - ExceptionInfo (8 -> 175: 373):
+      - ExceptionInfo (8 -> 175: 381):
       + Class [java/lang/Exception]
-      - ExceptionInfo (178 -> 201: 373):
+      - ExceptionInfo (178 -> 201: 381):
       + Class [java/lang/Exception]
-      - ExceptionInfo (204 -> 372: 373):
+      - ExceptionInfo (204 -> 380: 381):
       + Class [java/lang/Exception]
       Code attribute attributes (attribute count = 1):
       + Stack map table attribute (count = 16):
@@ -1711,13 +1715,13 @@ Methods (count = 11):
         - [204] Var: [a:com/varnatraffic/VarnaTraffic/a][a:java/lang/String][a:java/util/ArrayList][a:java/net/HttpURLConnection][a:java/lang/StringBuilder], Stack: [a:java/lang/Throwable]
         - [214] Var: [a:com/varnatraffic/VarnaTraffic/a][a:java/lang/String][a:java/util/ArrayList][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][T][T][T][T][T][a:java/lang/Throwable], Stack: 
         - [217] Var: [a:com/varnatraffic/VarnaTraffic/a][a:java/lang/String][a:java/util/ArrayList][a:java/net/HttpURLConnection][a:java/lang/StringBuilder], Stack: 
-        - [265] Var: ...[a:org/json/JSONArray][a:java/lang/String][i], Stack: (empty)
-        - [317] Var: -3, Stack: (empty)
-        - [320] Var: ..., Stack: [a:org/json/JSONException]
-        - [332] Var: -2, Stack: (empty)
-        - [335] Var: ..., Stack: (empty)
+        - [273] Var: ...[a:org/json/JSONArray][a:java/lang/String][i], Stack: (empty)
+        - [325] Var: -3, Stack: (empty)
+        - [328] Var: ..., Stack: [a:org/json/JSONException]
+        - [340] Var: -2, Stack: (empty)
         - [343] Var: ..., Stack: (empty)
-        - [373] Var: [a:com/varnatraffic/VarnaTraffic/a][a:java/lang/String], Stack: [a:java/lang/Exception]
+        - [351] Var: ..., Stack: (empty)
+        - [381] Var: [a:com/varnatraffic/VarnaTraffic/a][a:java/lang/String], Stack: [a:java/lang/Exception]
   + Method:       getItem(I)Ljava/lang/Object;
     Access flags: 0x1001
       = public synthetic java.lang.Object getItem(int)
@@ -2608,7 +2612,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 498):
+Constant Pool (count = 499):
   + Integer [-16711936]
   + Integer [-65536]
   + Integer [2130968582]
@@ -2703,7 +2707,7 @@ Constant Pool (count = 498):
   + Fieldref [VarnaTraffic/Helpers/e.a Ljava/lang/String;]
   + Fieldref [VarnaTraffic/Helpers/e.b Ljava/lang/String;]
   + Fieldref [VarnaTraffic/Helpers/e.c Ljava/lang/String;]
-  + Fieldref [VarnaTraffic/Helpers/e.d Ljava/lang/Integer;]
+  + Fieldref [VarnaTraffic/Helpers/e.d Ljava/lang/String;]
   + Fieldref [VarnaTraffic/Helpers/e.e Ljava/lang/Integer;]
   + Fieldref [VarnaTraffic/Helpers/e.f Ljava/lang/String;]
   + Fieldref [VarnaTraffic/Helpers/e.g Ljava/lang/String;]
@@ -2776,6 +2780,7 @@ Constant Pool (count = 498):
   + Methodref [java/lang/StringBuilder.append (Ljava/lang/Object;)Ljava/lang/StringBuilder;]
   + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
   + Methodref [java/lang/StringBuilder.append ([CII)Ljava/lang/StringBuilder;]
+  + Methodref [java/lang/StringBuilder.length ()I]
   + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
   + Methodref [java/net/HttpURLConnection.disconnect ()V]
   + Methodref [java/net/HttpURLConnection.getInputStream ()Ljava/io/InputStream;]
@@ -2840,7 +2845,7 @@ Constant Pool (count = 498):
   + NameAndType [c Ljava/lang/String;]
   + NameAndType [create ()Landroid/app/AlertDialog;]
   + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
-  + NameAndType [d Ljava/lang/Integer;]
+  + NameAndType [d Ljava/lang/String;]
   + NameAndType [density F]
   + NameAndType [disconnect ()V]
   + NameAndType [e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
@@ -3161,7 +3166,7 @@ Methods (count = 10):
     Access flags: 0x84
       = protected varargs VarnaTraffic.Helpers.c a(java.lang.Integer[])
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 872, locals = 15, stack = 7):
+    + Code attribute instructions (code length = 877, locals = 15, stack = 7):
       [0] ldc #29
         + String [VarnaTrafficApp]
       [2] ldc #27
@@ -3178,7 +3183,7 @@ Methods (count = 10):
         + Methodref [VarnaTraffic/Helpers/f.a (Landroid/content/Context;)Ljava/lang/Boolean;]
       [17] invokevirtual #157
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [20] ifeq +818 (target=838)
+      [20] ifeq +823 (target=843)
       [23] aconst_null
       [24] astore_3 v3
       [25] new #74
@@ -3208,13 +3213,13 @@ Methods (count = 10):
         + Class [java/net/URL]
       [59] dup
       [60] aload v5
-      [62] invokevirtual #168
+      [62] invokevirtual #169
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [65] invokespecial #174
+      [65] invokespecial #175
         + Methodref [java/net/URL.<init> (Ljava/lang/String;)V]
       [68] astore v6
       [70] aload v6
-      [72] invokevirtual #175
+      [72] invokevirtual #176
         + Methodref [java/net/URL.openConnection ()Ljava/net/URLConnection;]
       [75] checkcast #76
         + Class [java/net/HttpURLConnection]
@@ -3223,19 +3228,19 @@ Methods (count = 10):
       [80] aload_0 v0
       [81] getfield #105
         + Fieldref [com/varnatraffic/VarnaTraffic/e.a I]
-      [84] invokevirtual #171
+      [84] invokevirtual #172
         + Methodref [java/net/HttpURLConnection.setConnectTimeout (I)V]
       [87] aload_3 v3
       [88] aload_0 v0
       [89] getfield #105
         + Fieldref [com/varnatraffic/VarnaTraffic/e.a I]
-      [92] invokevirtual #172
+      [92] invokevirtual #173
         + Methodref [java/net/HttpURLConnection.setReadTimeout (I)V]
       [95] new #68
         + Class [java/io/InputStreamReader]
       [98] dup
       [99] aload_3 v3
-      [100] invokevirtual #170
+      [100] invokevirtual #171
         + Methodref [java/net/HttpURLConnection.getInputStream ()Ljava/io/InputStream;]
       [103] invokespecial #155
         + Methodref [java/io/InputStreamReader.<init> (Ljava/io/InputStream;)V]
@@ -3262,7 +3267,7 @@ Methods (count = 10):
       [143] aload_3 v3
       [144] ifnull +107 (target=251)
       [147] aload_3 v3
-      [148] invokevirtual #169
+      [148] invokevirtual #170
         + Methodref [java/net/HttpURLConnection.disconnect ()V]
       [151] goto +100 (target=251)
       [154] astore v5
@@ -3275,12 +3280,12 @@ Methods (count = 10):
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
       [165] pop
       [166] aload v5
-      [168] invokevirtual #173
+      [168] invokevirtual #174
         + Methodref [java/net/MalformedURLException.printStackTrace ()V]
       [171] aload_3 v3
       [172] ifnull +79 (target=251)
       [175] aload_3 v3
-      [176] invokevirtual #169
+      [176] invokevirtual #170
         + Methodref [java/net/HttpURLConnection.disconnect ()V]
       [179] goto +72 (target=251)
       [182] astore v5
@@ -3298,7 +3303,7 @@ Methods (count = 10):
       [199] aload_3 v3
       [200] ifnull +51 (target=251)
       [203] aload_3 v3
-      [204] invokevirtual #169
+      [204] invokevirtual #170
         + Methodref [java/net/HttpURLConnection.disconnect ()V]
       [207] goto +44 (target=251)
       [210] astore v5
@@ -3316,404 +3321,406 @@ Methods (count = 10):
       [227] aload_3 v3
       [228] ifnull +23 (target=251)
       [231] aload_3 v3
-      [232] invokevirtual #169
+      [232] invokevirtual #170
         + Methodref [java/net/HttpURLConnection.disconnect ()V]
       [235] goto +16 (target=251)
       [238] astore v10
       [240] aload_3 v3
       [241] ifnull +7 (target=248)
       [244] aload_3 v3
-      [245] invokevirtual #169
+      [245] invokevirtual #170
         + Methodref [java/net/HttpURLConnection.disconnect ()V]
       [248] aload v10
       [250] athrow
-      [251] new #86
-        + Class [org/json/JSONObject]
+      [251] new #79
+        + Class [java/util/ArrayList]
       [254] dup
-      [255] aload v4
-      [257] invokevirtual #168
-        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [260] invokespecial #187
-        + Methodref [org/json/JSONObject.<init> (Ljava/lang/String;)V]
-      [263] astore v5
-      [265] aload v5
-      [267] ldc #39
-        + String [liveData]
-      [269] invokevirtual #189
-        + Methodref [org/json/JSONObject.getJSONArray (Ljava/lang/String;)Lorg/json/JSONArray;]
-      [272] astore v6
-      [274] aload v5
-      [276] ldc #40
-        + String [schedule]
-      [278] invokevirtual #190
-        + Methodref [org/json/JSONObject.getJSONObject (Ljava/lang/String;)Lorg/json/JSONObject;]
-      [281] astore v7
-      [283] new #79
-        + Class [java/util/ArrayList]
-      [286] dup
-      [287] invokespecial #176
+      [255] invokespecial #177
         + Methodref [java/util/ArrayList.<init> ()V]
-      [290] astore v8
-      [292] iconst_0
-      [293] istore v9
-      [295] iload v9
-      [297] aload v6
-      [299] invokevirtual #185
-        + Methodref [org/json/JSONArray.length ()I]
-      [302] ificmpge +329 (target=631)
-      [305] new #45
-        + Class [VarnaTraffic/Helpers/e]
-      [308] dup
-      [309] invokespecial #109
-        + Methodref [VarnaTraffic/Helpers/e.<init> ()V]
-      [312] astore v10
-      [314] aload v10
-      [316] aload v6
-      [318] iload v9
-      [320] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [323] ldc #30
-        + String [arriveIn]
-      [325] invokevirtual #192
-        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
-      [328] ifeq +18 (target=346)
-      [331] aload v6
-      [333] iload v9
-      [335] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [338] ldc #30
-        + String [arriveIn]
-      [340] invokevirtual #191
-        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [343] goto +4 (target=347)
-      [346] aconst_null
-      [347] putfield #92
-        + Fieldref [VarnaTraffic/Helpers/e.a Ljava/lang/String;]
-      [350] aload v10
-      [352] aload v6
-      [354] iload v9
-      [356] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [359] ldc #31
-        + String [arriveTime]
-      [361] invokevirtual #192
-        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
-      [364] ifeq +18 (target=382)
-      [367] aload v6
-      [369] iload v9
-      [371] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [374] ldc #31
-        + String [arriveTime]
-      [376] invokevirtual #191
-        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [379] goto +4 (target=383)
-      [382] aconst_null
-      [383] putfield #93
-        + Fieldref [VarnaTraffic/Helpers/e.b Ljava/lang/String;]
-      [386] aload v10
-      [388] aload v6
-      [390] iload v9
-      [392] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [395] ldc #32
-        + String [delay]
-      [397] invokevirtual #192
-        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
-      [400] ifeq +18 (target=418)
-      [403] aload v6
-      [405] iload v9
-      [407] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [410] ldc #32
-        + String [delay]
-      [412] invokevirtual #191
-        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [415] goto +4 (target=419)
-      [418] aconst_null
-      [419] putfield #94
-        + Fieldref [VarnaTraffic/Helpers/e.c Ljava/lang/String;]
-      [422] aload v10
-      [424] aload v6
-      [426] iload v9
-      [428] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [431] ldc #34
-        + String [device]
-      [433] invokevirtual #192
-        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
-      [436] ifeq +21 (target=457)
-      [439] aload v6
-      [441] iload v9
-      [443] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [446] ldc #34
-        + String [device]
-      [448] invokevirtual #188
-        + Methodref [org/json/JSONObject.getInt (Ljava/lang/String;)I]
-      [451] invokestatic #161
-        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [454] goto +4 (target=458)
-      [457] aconst_null
-      [458] putfield #95
-        + Fieldref [VarnaTraffic/Helpers/e.d Ljava/lang/Integer;]
-      [461] aload v10
-      [463] aload v6
-      [465] iload v9
-      [467] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [470] ldc #35
-        + String [direction]
-      [472] invokevirtual #192
-        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
-      [475] ifeq +21 (target=496)
-      [478] aload v6
-      [480] iload v9
-      [482] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [485] ldc #35
-        + String [direction]
-      [487] invokevirtual #188
-        + Methodref [org/json/JSONObject.getInt (Ljava/lang/String;)I]
-      [490] invokestatic #161
-        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [493] goto +4 (target=497)
-      [496] aconst_null
-      [497] putfield #96
-        + Fieldref [VarnaTraffic/Helpers/e.e Ljava/lang/Integer;]
-      [500] aload v10
-      [502] aload v6
-      [504] iload v9
-      [506] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [509] ldc #36
-        + String [distanceLeft]
-      [511] invokevirtual #192
-        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
-      [514] ifeq +18 (target=532)
-      [517] aload v6
-      [519] iload v9
-      [521] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [524] ldc #36
-        + String [distanceLeft]
-      [526] invokevirtual #191
-        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [529] goto +4 (target=533)
-      [532] aconst_null
-      [533] putfield #97
-        + Fieldref [VarnaTraffic/Helpers/e.f Ljava/lang/String;]
-      [536] aload v10
-      [538] aload v6
-      [540] iload v9
-      [542] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [545] ldc #38
-        + String [line]
-      [547] invokevirtual #192
-        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
-      [550] ifeq +18 (target=568)
-      [553] aload v6
-      [555] iload v9
-      [557] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [560] ldc #38
-        + String [line]
-      [562] invokevirtual #191
-        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [565] goto +4 (target=569)
-      [568] aconst_null
-      [569] putfield #98
-        + Fieldref [VarnaTraffic/Helpers/e.g Ljava/lang/String;]
-      [572] aload v10
-      [574] aconst_null
-      [575] putfield #99
-        + Fieldref [VarnaTraffic/Helpers/e.h Landroid/location/Location;]
-      [578] aload v10
-      [580] aload v6
-      [582] iload v9
-      [584] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [587] ldc #41
-        + String [state]
-      [589] invokevirtual #192
-        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
-      [592] ifeq +21 (target=613)
-      [595] aload v6
-      [597] iload v9
-      [599] invokevirtual #184
-        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [602] ldc #41
-        + String [state]
-      [604] invokevirtual #188
-        + Methodref [org/json/JSONObject.getInt (Ljava/lang/String;)I]
-      [607] invokestatic #161
-        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [610] goto +4 (target=614)
-      [613] aconst_null
-      [614] putfield #100
-        + Fieldref [VarnaTraffic/Helpers/e.i Ljava/lang/Integer;]
-      [617] aload v8
-      [619] aload v10
-      [621] invokevirtual #177
-        + Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
-      [624] pop
-      [625] iinc v9, 1
-      [628] goto -333 (target=295)
-      [631] new #80
+      [258] astore v5
+      [260] new #80
         + Class [java/util/HashMap]
-      [634] dup
-      [635] invokespecial #180
+      [263] dup
+      [264] invokespecial #181
         + Methodref [java/util/HashMap.<init> ()V]
-      [638] astore v9
-      [640] aload v7
-      [642] invokevirtual #193
-        + Methodref [org/json/JSONObject.keys ()Ljava/util/Iterator;]
-      [645] astore v10
-      [647] aload v10
-      [649] invokeinterface #194
-        + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
-      [654] ifeq +134 (target=788)
-      [657] aload v10
-      [659] invokeinterface #195
-        + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
-      [664] checkcast #73
-        + Class [java/lang/String]
-      [667] astore v11
-      [669] new #79
-        + Class [java/util/ArrayList]
-      [672] dup
-      [673] invokespecial #176
-        + Methodref [java/util/ArrayList.<init> ()V]
-      [676] astore v12
-      [678] aload v7
-      [680] aload v11
-      [682] invokevirtual #189
+      [267] astore v6
+      [269] aload v4
+      [271] invokevirtual #168
+        + Methodref [java/lang/StringBuilder.length ()I]
+      [274] ifle +519 (target=793)
+      [277] new #86
+        + Class [org/json/JSONObject]
+      [280] dup
+      [281] aload v4
+      [283] invokevirtual #169
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [286] invokespecial #188
+        + Methodref [org/json/JSONObject.<init> (Ljava/lang/String;)V]
+      [289] astore v7
+      [291] aload v7
+      [293] ldc #39
+        + String [liveData]
+      [295] invokevirtual #190
         + Methodref [org/json/JSONObject.getJSONArray (Ljava/lang/String;)Lorg/json/JSONArray;]
-      [685] astore v13
-      [687] iconst_0
-      [688] istore v14
-      [690] iload v14
-      [692] aload v13
-      [694] invokevirtual #185
+      [298] astore v8
+      [300] aload v7
+      [302] ldc #40
+        + String [schedule]
+      [304] invokevirtual #191
+        + Methodref [org/json/JSONObject.getJSONObject (Ljava/lang/String;)Lorg/json/JSONObject;]
+      [307] astore v9
+      [309] iconst_0
+      [310] istore v10
+      [312] iload v10
+      [314] aload v8
+      [316] invokevirtual #186
         + Methodref [org/json/JSONArray.length ()I]
-      [697] ificmpge +58 (target=755)
-      [700] aload v12
-      [702] new #47
-        + Class [VarnaTraffic/Helpers/g]
-      [705] dup
-      [706] aload v13
-      [708] iload v14
-      [710] invokevirtual #184
+      [319] ificmpge +326 (target=645)
+      [322] new #45
+        + Class [VarnaTraffic/Helpers/e]
+      [325] dup
+      [326] invokespecial #109
+        + Methodref [VarnaTraffic/Helpers/e.<init> ()V]
+      [329] astore v11
+      [331] aload v11
+      [333] aload v8
+      [335] iload v10
+      [337] invokevirtual #185
         + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [713] ldc #33
-        + String [destStationTime]
-      [715] invokevirtual #191
+      [340] ldc #30
+        + String [arriveIn]
+      [342] invokevirtual #193
+        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
+      [345] ifeq +18 (target=363)
+      [348] aload v8
+      [350] iload v10
+      [352] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [355] ldc #30
+        + String [arriveIn]
+      [357] invokevirtual #192
         + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [718] aload v13
-      [720] iload v14
-      [722] invokevirtual #184
+      [360] goto +4 (target=364)
+      [363] aconst_null
+      [364] putfield #92
+        + Fieldref [VarnaTraffic/Helpers/e.a Ljava/lang/String;]
+      [367] aload v11
+      [369] aload v8
+      [371] iload v10
+      [373] invokevirtual #185
         + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [725] ldc #34
+      [376] ldc #31
+        + String [arriveTime]
+      [378] invokevirtual #193
+        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
+      [381] ifeq +18 (target=399)
+      [384] aload v8
+      [386] iload v10
+      [388] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [391] ldc #31
+        + String [arriveTime]
+      [393] invokevirtual #192
+        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
+      [396] goto +4 (target=400)
+      [399] aconst_null
+      [400] putfield #93
+        + Fieldref [VarnaTraffic/Helpers/e.b Ljava/lang/String;]
+      [403] aload v11
+      [405] aload v8
+      [407] iload v10
+      [409] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [412] ldc #32
+        + String [delay]
+      [414] invokevirtual #193
+        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
+      [417] ifeq +18 (target=435)
+      [420] aload v8
+      [422] iload v10
+      [424] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [427] ldc #32
+        + String [delay]
+      [429] invokevirtual #192
+        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
+      [432] goto +4 (target=436)
+      [435] aconst_null
+      [436] putfield #94
+        + Fieldref [VarnaTraffic/Helpers/e.c Ljava/lang/String;]
+      [439] aload v11
+      [441] aload v8
+      [443] iload v10
+      [445] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [448] ldc #34
         + String [device]
-      [727] invokevirtual #191
-        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [730] aload v13
-      [732] iload v14
-      [734] invokevirtual #184
+      [450] invokevirtual #193
+        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
+      [453] ifeq +18 (target=471)
+      [456] aload v8
+      [458] iload v10
+      [460] invokevirtual #185
         + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
-      [737] ldc #42
-        + String [text]
-      [739] invokevirtual #191
+      [463] ldc #34
+        + String [device]
+      [465] invokevirtual #192
         + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
-      [742] invokespecial #111
-        + Methodref [VarnaTraffic/Helpers/g.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V]
-      [745] invokevirtual #177
+      [468] goto +4 (target=472)
+      [471] aconst_null
+      [472] putfield #95
+        + Fieldref [VarnaTraffic/Helpers/e.d Ljava/lang/String;]
+      [475] aload v11
+      [477] aload v8
+      [479] iload v10
+      [481] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [484] ldc #35
+        + String [direction]
+      [486] invokevirtual #193
+        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
+      [489] ifeq +21 (target=510)
+      [492] aload v8
+      [494] iload v10
+      [496] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [499] ldc #35
+        + String [direction]
+      [501] invokevirtual #189
+        + Methodref [org/json/JSONObject.getInt (Ljava/lang/String;)I]
+      [504] invokestatic #161
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [507] goto +4 (target=511)
+      [510] aconst_null
+      [511] putfield #96
+        + Fieldref [VarnaTraffic/Helpers/e.e Ljava/lang/Integer;]
+      [514] aload v11
+      [516] aload v8
+      [518] iload v10
+      [520] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [523] ldc #36
+        + String [distanceLeft]
+      [525] invokevirtual #193
+        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
+      [528] ifeq +18 (target=546)
+      [531] aload v8
+      [533] iload v10
+      [535] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [538] ldc #36
+        + String [distanceLeft]
+      [540] invokevirtual #192
+        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
+      [543] goto +4 (target=547)
+      [546] aconst_null
+      [547] putfield #97
+        + Fieldref [VarnaTraffic/Helpers/e.f Ljava/lang/String;]
+      [550] aload v11
+      [552] aload v8
+      [554] iload v10
+      [556] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [559] ldc #38
+        + String [line]
+      [561] invokevirtual #193
+        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
+      [564] ifeq +18 (target=582)
+      [567] aload v8
+      [569] iload v10
+      [571] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [574] ldc #38
+        + String [line]
+      [576] invokevirtual #192
+        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
+      [579] goto +4 (target=583)
+      [582] aconst_null
+      [583] putfield #98
+        + Fieldref [VarnaTraffic/Helpers/e.g Ljava/lang/String;]
+      [586] aload v11
+      [588] aconst_null
+      [589] putfield #99
+        + Fieldref [VarnaTraffic/Helpers/e.h Landroid/location/Location;]
+      [592] aload v11
+      [594] aload v8
+      [596] iload v10
+      [598] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [601] ldc #41
+        + String [state]
+      [603] invokevirtual #193
+        + Methodref [org/json/JSONObject.has (Ljava/lang/String;)Z]
+      [606] ifeq +21 (target=627)
+      [609] aload v8
+      [611] iload v10
+      [613] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [616] ldc #41
+        + String [state]
+      [618] invokevirtual #189
+        + Methodref [org/json/JSONObject.getInt (Ljava/lang/String;)I]
+      [621] invokestatic #161
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [624] goto +4 (target=628)
+      [627] aconst_null
+      [628] putfield #100
+        + Fieldref [VarnaTraffic/Helpers/e.i Ljava/lang/Integer;]
+      [631] aload v5
+      [633] aload v11
+      [635] invokevirtual #178
         + Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
-      [748] pop
-      [749] iinc v14, 1
-      [752] goto -62 (target=690)
-      [755] aload v9
-      [757] aload v11
-      [759] aload v12
-      [761] invokevirtual #183
+      [638] pop
+      [639] iinc v10, 1
+      [642] goto -330 (target=312)
+      [645] aload v9
+      [647] invokevirtual #194
+        + Methodref [org/json/JSONObject.keys ()Ljava/util/Iterator;]
+      [650] astore v10
+      [652] aload v10
+      [654] invokeinterface #195
+        + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+      [659] ifeq +134 (target=793)
+      [662] aload v10
+      [664] invokeinterface #196
+        + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
+      [669] checkcast #73
+        + Class [java/lang/String]
+      [672] astore v11
+      [674] new #79
+        + Class [java/util/ArrayList]
+      [677] dup
+      [678] invokespecial #177
+        + Methodref [java/util/ArrayList.<init> ()V]
+      [681] astore v12
+      [683] aload v9
+      [685] aload v11
+      [687] invokevirtual #190
+        + Methodref [org/json/JSONObject.getJSONArray (Ljava/lang/String;)Lorg/json/JSONArray;]
+      [690] astore v13
+      [692] iconst_0
+      [693] istore v14
+      [695] iload v14
+      [697] aload v13
+      [699] invokevirtual #186
+        + Methodref [org/json/JSONArray.length ()I]
+      [702] ificmpge +58 (target=760)
+      [705] aload v12
+      [707] new #47
+        + Class [VarnaTraffic/Helpers/g]
+      [710] dup
+      [711] aload v13
+      [713] iload v14
+      [715] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [718] ldc #33
+        + String [destStationTime]
+      [720] invokevirtual #192
+        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
+      [723] aload v13
+      [725] iload v14
+      [727] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [730] ldc #34
+        + String [device]
+      [732] invokevirtual #192
+        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
+      [735] aload v13
+      [737] iload v14
+      [739] invokevirtual #185
+        + Methodref [org/json/JSONArray.getJSONObject (I)Lorg/json/JSONObject;]
+      [742] ldc #42
+        + String [text]
+      [744] invokevirtual #192
+        + Methodref [org/json/JSONObject.getString (Ljava/lang/String;)Ljava/lang/String;]
+      [747] invokespecial #111
+        + Methodref [VarnaTraffic/Helpers/g.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V]
+      [750] invokevirtual #178
+        + Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
+      [753] pop
+      [754] iinc v14, 1
+      [757] goto -62 (target=695)
+      [760] aload v6
+      [762] aload v11
+      [764] aload v12
+      [766] invokevirtual #184
         + Methodref [java/util/HashMap.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;]
-      [764] pop
-      [765] goto +20 (target=785)
-      [768] astore v12
-      [770] ldc #29
+      [769] pop
+      [770] goto +20 (target=790)
+      [773] astore v12
+      [775] ldc #29
         + String [VarnaTrafficApp]
-      [772] ldc #24
+      [777] ldc #24
         + String [Error executing]
-      [774] aload v12
-      [776] invokestatic #124
+      [779] aload v12
+      [781] invokestatic #124
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
-      [779] pop
-      [780] aload v12
-      [782] invokevirtual #186
+      [784] pop
+      [785] aload v12
+      [787] invokevirtual #187
         + Methodref [org/json/JSONException.printStackTrace ()V]
-      [785] goto -138 (target=647)
-      [788] new #43
+      [790] goto -138 (target=652)
+      [793] new #43
         + Class [VarnaTraffic/Helpers/c]
-      [791] dup
-      [792] invokespecial #108
+      [796] dup
+      [797] invokespecial #108
         + Methodref [VarnaTraffic/Helpers/c.<init> ()V]
-      [795] astore_2 v2
-      [796] aload_2 v2
-      [797] aload v8
-      [799] putfield #87
+      [800] astore_2 v2
+      [801] aload_2 v2
+      [802] aload v5
+      [804] putfield #87
         + Fieldref [VarnaTraffic/Helpers/c.a Ljava/util/ArrayList;]
-      [802] aload_2 v2
-      [803] aload v9
-      [805] putfield #88
+      [807] aload_2 v2
+      [808] aload v6
+      [810] putfield #88
         + Fieldref [VarnaTraffic/Helpers/c.b Ljava/util/HashMap;]
-      [808] aload_2 v2
-      [809] iconst_1
-      [810] invokestatic #158
+      [813] aload_2 v2
+      [814] iconst_1
+      [815] invokestatic #158
         + Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [813] putfield #89
+      [818] putfield #89
         + Fieldref [VarnaTraffic/Helpers/c.c Ljava/lang/Boolean;]
-      [816] aload_2 v2
-      [817] areturn
-      [818] astore v5
-      [820] ldc #29
+      [821] aload_2 v2
+      [822] areturn
+      [823] astore v5
+      [825] ldc #29
         + String [VarnaTrafficApp]
-      [822] ldc #22
+      [827] ldc #22
         + String [Cannot process JSON results]
-      [824] aload v5
-      [826] invokestatic #124
+      [829] aload v5
+      [831] invokestatic #124
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
-      [829] pop
-      [830] aload v5
-      [832] invokevirtual #186
+      [834] pop
+      [835] aload v5
+      [837] invokevirtual #187
         + Methodref [org/json/JSONException.printStackTrace ()V]
-      [835] goto +27 (target=862)
-      [838] ldc #29
+      [840] goto +27 (target=867)
+      [843] ldc #29
         + String [VarnaTrafficApp]
-      [840] ldc #28
+      [845] ldc #28
         + String [Toast no internet connection]
-      [842] invokestatic #123
+      [847] invokestatic #123
         + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
-      [845] pop
-      [846] new #43
+      [850] pop
+      [851] new #43
         + Class [VarnaTraffic/Helpers/c]
-      [849] dup
-      [850] invokespecial #108
+      [854] dup
+      [855] invokespecial #108
         + Methodref [VarnaTraffic/Helpers/c.<init> ()V]
-      [853] astore_2 v2
-      [854] aload_2 v2
-      [855] iconst_0
-      [856] invokestatic #158
+      [858] astore_2 v2
+      [859] aload_2 v2
+      [860] iconst_0
+      [861] invokestatic #158
         + Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [859] putfield #89
+      [864] putfield #89
         + Fieldref [VarnaTraffic/Helpers/c.c Ljava/lang/Boolean;]
-      [862] goto +8 (target=870)
-      [865] astore_3 v3
-      [866] aload_3 v3
-      [867] invokevirtual #159
+      [867] goto +8 (target=875)
+      [870] astore_3 v3
+      [871] aload_3 v3
+      [872] invokevirtual #159
         + Methodref [java/lang/Exception.printStackTrace ()V]
-      [870] aload_2 v2
-      [871] areturn
+      [875] aload_2 v2
+      [876] areturn
       Code attribute exceptions (count = 12):
       - ExceptionInfo (34 -> 143: 154):
       + Class [java/net/MalformedURLException]
@@ -3726,13 +3733,13 @@ Methods (count = 10):
       - ExceptionInfo (182 -> 199: 238):
       - ExceptionInfo (210 -> 227: 238):
       - ExceptionInfo (238 -> 240: 238):
-      - ExceptionInfo (669 -> 765: 768):
+      - ExceptionInfo (674 -> 770: 773):
       + Class [org/json/JSONException]
-      - ExceptionInfo (251 -> 817: 818):
+      - ExceptionInfo (251 -> 822: 823):
       + Class [org/json/JSONException]
-      - ExceptionInfo (10 -> 817: 865):
+      - ExceptionInfo (10 -> 822: 870):
       + Class [java/lang/Exception]
-      - ExceptionInfo (818 -> 862: 865):
+      - ExceptionInfo (823 -> 867: 870):
       + Class [java/lang/Exception]
       Code attribute attributes (attribute count = 1):
       + Stack map table attribute (count = 37):
@@ -3744,35 +3751,35 @@ Methods (count = 10):
         - [238] Var: ..., Stack: [a:java/lang/Throwable]
         - [248] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][T][T][T][T][T][a:java/lang/Throwable], Stack: 
         - [251] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder], Stack: 
-        - [295] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i], Stack: 
-        - [346] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e]
-        - [347] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
-        - [382] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
-        - [383] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
-        - [418] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
-        - [419] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
-        - [457] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
-        - [458] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/Integer]
-        - [496] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
-        - [497] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/Integer]
-        - [532] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
-        - [533] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
-        - [568] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
-        - [569] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
-        - [613] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
-        - [614] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/Integer]
-        - [631] Var: -2, Stack: (empty)
-        - [647] Var: ...[a:java/util/HashMap][a:java/util/Iterator], Stack: (empty)
-        - [690] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][a:java/util/HashMap][a:java/util/Iterator][a:java/lang/String][a:java/util/ArrayList][a:org/json/JSONArray][i], Stack: 
-        - [755] Var: -1, Stack: (empty)
-        - [768] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/ArrayList][a:java/util/HashMap][a:java/util/Iterator][a:java/lang/String], Stack: [a:org/json/JSONException]
-        - [785] Var: -1, Stack: (empty)
-        - [788] Var: ..., Stack: (empty)
-        - [818] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder], Stack: [a:org/json/JSONException]
-        - [838] Var: -2, Stack: (empty)
-        - [862] Var: ..., Stack: (empty)
-        - [865] Var: ..., Stack: [a:java/lang/Exception]
-        - [870] Var: ..., Stack: (empty)
+        - [312] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i], Stack: 
+        - [363] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e]
+        - [364] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
+        - [399] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
+        - [400] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
+        - [435] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
+        - [436] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
+        - [471] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
+        - [472] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
+        - [510] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
+        - [511] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/Integer]
+        - [546] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
+        - [547] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
+        - [582] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
+        - [583] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/String]
+        - [627] Var: ..., Stack: [a:VarnaTraffic/Helpers/e]
+        - [628] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][i][a:VarnaTraffic/Helpers/e], Stack: [a:VarnaTraffic/Helpers/e][a:java/lang/Integer]
+        - [645] Var: -2, Stack: (empty)
+        - [652] Var: ...[a:java/util/Iterator], Stack: (empty)
+        - [695] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/Iterator][a:java/lang/String][a:java/util/ArrayList][a:org/json/JSONArray][i], Stack: 
+        - [760] Var: -1, Stack: (empty)
+        - [773] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap][a:org/json/JSONObject][a:org/json/JSONArray][a:org/json/JSONObject][a:java/util/Iterator][a:java/lang/String], Stack: [a:org/json/JSONException]
+        - [790] Var: -1, Stack: (empty)
+        - [793] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder][a:java/util/ArrayList][a:java/util/HashMap], Stack: 
+        - [823] Var: [a:com/varnatraffic/VarnaTraffic/e][a:[Ljava/lang/Integer;][a:VarnaTraffic/Helpers/c][a:java/net/HttpURLConnection][a:java/lang/StringBuilder], Stack: [a:org/json/JSONException]
+        - [843] Var: -2, Stack: (empty)
+        - [867] Var: ..., Stack: (empty)
+        - [870] Var: ..., Stack: [a:java/lang/Exception]
+        - [875] Var: ..., Stack: (empty)
   + Method:       a(LVarnaTraffic/Helpers/c;)V
     Access flags: 0x4
       = protected void a(VarnaTraffic.Helpers.c)
@@ -3959,21 +3966,21 @@ Methods (count = 10):
       [266] aload_1 v1
       [267] getfield #87
         + Fieldref [VarnaTraffic/Helpers/c.a Ljava/util/ArrayList;]
-      [270] invokevirtual #178
+      [270] invokevirtual #179
         + Methodref [java/util/ArrayList.isEmpty ()Z]
       [273] ifne +441 (target=714)
       [276] aload_1 v1
       [277] getfield #87
         + Fieldref [VarnaTraffic/Helpers/c.a Ljava/util/ArrayList;]
-      [280] invokevirtual #179
+      [280] invokevirtual #180
         + Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
       [283] astore v33
       [285] aload v33
-      [287] invokeinterface #194
+      [287] invokeinterface #195
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [292] ifeq +419 (target=711)
       [295] aload v33
-      [297] invokeinterface #195
+      [297] invokeinterface #196
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [302] checkcast #45
         + Class [VarnaTraffic/Helpers/e]
@@ -4369,23 +4376,23 @@ Methods (count = 10):
       [926] aload_1 v1
       [927] getfield #88
         + Fieldref [VarnaTraffic/Helpers/c.b Ljava/util/HashMap;]
-      [930] invokevirtual #182
+      [930] invokevirtual #183
         + Methodref [java/util/HashMap.isEmpty ()Z]
       [933] ifne +277 (target=1210)
       [936] aload_1 v1
       [937] getfield #88
         + Fieldref [VarnaTraffic/Helpers/c.b Ljava/util/HashMap;]
-      [940] invokevirtual #181
+      [940] invokevirtual #182
         + Methodref [java/util/HashMap.entrySet ()Ljava/util/Set;]
-      [943] invokeinterface #198
+      [943] invokeinterface #199
         + InterfaceMethodref [java/util/Set.iterator ()Ljava/util/Iterator;]
       [948] astore v41
       [950] aload v41
-      [952] invokeinterface #194
+      [952] invokeinterface #195
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [957] ifeq +250 (target=1207)
       [960] aload v41
-      [962] invokeinterface #195
+      [962] invokeinterface #196
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [967] checkcast #82
         + Class [java/util/Map$Entry]
@@ -4426,7 +4433,7 @@ Methods (count = 10):
         + Methodref [android/widget/TextView.setId (I)V]
       [1027] aload v11
       [1029] aload v42
-      [1031] invokeinterface #196
+      [1031] invokeinterface #197
         + InterfaceMethodref [java/util/Map$Entry.getKey ()Ljava/lang/Object;]
       [1036] checkcast #70
         + Class [java/lang/CharSequence]
@@ -4450,19 +4457,19 @@ Methods (count = 10):
         + String []
       [1067] astore v43
       [1069] aload v42
-      [1071] invokeinterface #197
+      [1071] invokeinterface #198
         + InterfaceMethodref [java/util/Map$Entry.getValue ()Ljava/lang/Object;]
       [1076] checkcast #79
         + Class [java/util/ArrayList]
-      [1079] invokevirtual #179
+      [1079] invokevirtual #180
         + Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
       [1082] astore v44
       [1084] aload v44
-      [1086] invokeinterface #194
+      [1086] invokeinterface #195
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [1091] ifeq +48 (target=1139)
       [1094] aload v44
-      [1096] invokeinterface #195
+      [1096] invokeinterface #196
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [1101] checkcast #47
         + Class [VarnaTraffic/Helpers/g]
@@ -4484,7 +4491,7 @@ Methods (count = 10):
         + String [ ]
       [1128] invokevirtual #166
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [1131] invokevirtual #168
+      [1131] invokevirtual #169
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [1134] astore v43
       [1136] goto -52 (target=1084)
